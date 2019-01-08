@@ -1,0 +1,16 @@
+function addExistingPatientInDoctor($patientDatalifeID, $expectedstring){	
+	_click(_link("Patients"));
+	_click(_span("Add Existing"));
+	_setValue(_textbox("input"), $patientDatalifeID);
+	_click(_italic("glyphicon glyphicon-search"));
+	_click(_italic("icon-plus-2"));
+	_assertExists(_paragraph($expectedstring));
+	_assertVisible(_paragraph($expectedstring));
+}
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\DoctorRepo.sah");
+
+login($doctorusername, $doctorpassword);
+addExistingPatientInDoctor($patientDatalifeID, "This subscriber was added earlier");
+

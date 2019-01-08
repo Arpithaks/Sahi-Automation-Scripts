@@ -1,0 +1,54 @@
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+var $data = _getExcel("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet1");
+var $getData= $data.getData();
+
+for($i=1; $i<$getData.length; $i++)
+{
+	var $users= parseInt($users);
+	if($users==$i)
+	{
+		var $platinumPatientFirstName = $getData[$i][0]; 
+		var $platinumPatientMiddleName = $getData[$i][1]; 
+		var $platinumPatientLastName = $getData[$i][2]; 
+		var $platinumPatientEmail = $getData[$i][3]; 
+		var $platinumPatientMobileNumber = $getData[$i][4]; 
+		var $platinumPatientPassword = $getData[$i][5]; 
+		var $platinumPatientConfirmPassword = $getData[$i][6];
+		var $platinumPatientCardNumber = $getData[$i][7];
+		var $platinumPatientCardExpiry	= $getData[$i][8];
+		var $platinumPatientcardCVV = $getData[$i][9];
+		var $expectedstring1 = $getData[$i][10];
+		registerPlatinumPatientInputParams($platinumPatientFirstName, $platinumPatientMiddleName, $platinumPatientLastName, $platinumPatientEmail, $platinumPatientMobileNumber, $platinumPatientPassword, $platinumPatientConfirmPassword, $platinumPatientCardNumber, $platinumPatientCardExpiry, $platinumPatientcardCVV, $expectedstring1);
+	}
+}
+
+function registerPlatinumPatientInputParams($platinumPatientFirstName, $platinumPatientMiddleName, $platinumPatientLastName, $platinumPatientEmail, $platinumPatientMobileNumber, $platinumPatientPassword, $platinumPatientConfirmPassword, $platinumPatientCardNumber, $platinumPatientCardExpiry, $platinumPatientcardCVV, $expectedstring1){
+	_click(_link("Register"));
+	_click(_link("Subscriber"));
+	_setValue(_radio(0,_in(_listItem("PLATINUM",_in(_list("packages"))))),"PLATINUM");
+	//_setValue(_radio("subscriberPackage"), "PLATINUM");
+	//_setValue(_radio("subscriberPackage"), "0");
+	_setValue(_textbox("name.firstName"), $platinumPatientFirstName);
+	_setValue(_textbox("name.middleName"), $platinumPatientMiddleName);
+	_setValue(_textbox("name.lastName"), $platinumPatientLastName);
+	_setValue(_textbox("email"), $platinumPatientEmail);
+	_setValue(_textbox("mobileNo"), $platinumPatientMobileNumber);
+	_setValue(_password("password"), $platinumPatientPassword);
+	_setValue(_password("PLATINUM[1]"), $platinumPatientConfirmPassword);
+	_click(_submit("Pay"));
+	_selectDomain("api.razorpay.com");
+	_click(_italic(""));
+	_setValue(_telephonebox("card[number]"), $platinumPatientCardNumber);
+	_setValue(_textbox("card[expiry]"), $platinumPatientCardExpiry);
+	_setValue(_telephonebox("card[cvv]"), $platinumPatientcardCVV);
+	_click(_span("Verify"));
+	_click(_link("Skip saving card"));
+	_click(_div("DataLife"));
+	//_selectWindow("popup_7N8FGQMQvQPzeT");
+	_click(_button("Success"));
+	_assertExists(_bold($expectedstring1));
+	_assertVisible(_bold($expectedstring1));
+	_assertEqual($expectedstring1, _getText(_bold($expectedstring1)));
+	_assertContainsText($expectedstring1, _bold($expectedstring1));
+}

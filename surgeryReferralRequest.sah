@@ -1,0 +1,41 @@
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+var $data = _getExcel("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet11");
+var $getData= $data.getData();
+
+for ($i=1; $i<$getData.length; $i++)
+{
+	var $users = parseInt($users)
+	if($users == $i)
+	{
+		var $surgerySpecialty = $getData[$i][0]; 	       
+		var $surgeryProcedure = $getData[$i][1]; 
+		var $surgeryPreferredDate = $getData[$i][2]; 	
+		var $surgeryDescription = $getData[$i][3]; 
+		var $surgeryRecordType = $getData[$i][4]; 
+		surgeryReferralServiceRequestInputParams($surgerySpecialty, $surgeryProcedure, $surgeryPreferredDate, $surgeryDescription, $surgeryRecordType, "Your Surgery Referral request has been submitted successfully.Our customer care will get back to you shortly!");
+	}
+}
+
+function surgeryReferralServiceRequestInputParams($surgerySpecialty, $surgeryProcedure, $surgeryPreferredDate, $surgeryDescription, $surgeryRecordType, $expectedstring){
+	_click(_span("Service Request"));
+	_click(_span("Surgery Referral"));
+	_setSelected(_select("speciality"), $surgerySpecialty);
+	_setSelected(_select("typeOfProcedure"), $surgeryProcedure);
+	_click(_textbox("preferredDate"));
+	_setValue(_textbox("preferredDate"), $surgeryPreferredDate);
+	_setValue(_textarea("description"), $surgeryDescription);
+	_click(_button("Next"));
+	_setValue(_radio("recordType[3]"), $surgeryRecordType);
+	//_setValue(_radio(0,_in(_listItem("PRESCRIPTION",_in(_list("square-radio-2"))))),"PRESCRIPTION");
+	_check(_checkbox("sharedRecords.recordId"));
+	//_check(_checkbox("sharedRecords.recordId[1]"));
+	_click(_button("Next"));
+	_check(_checkbox("terms"));
+	_click(_submit("Submit Request"));
+	_assertEqual($expectedstring, _getText(_bold($expectedstring)));
+	_assertContainsText($expectedstring, _bold($expectedstring));
+}
+	
+

@@ -1,0 +1,66 @@
+// Admin Login
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Admin\\adminTestData.xls", "Sheet1");
+var $adminusername = $data[0]["adminusername"];
+var $adminpassword = $data[0]["adminpassword"];
+
+
+
+//Patient Registration From Admin
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Admin\\adminTestData.xls", "Sheet2");
+var $adminPatientFirstName = $data[0]["adminPatientFirstName"]; 
+var $adminPatientMiddleName = $data[0]["adminPatientMiddleName"]; 
+var $adminPatientLastName = $data[0]["adminPatientLastName"]; 
+var $adminPatientEmail = $data[0]["adminPatientEmail"]; 
+var $adminPatientMobileNumber = $data[0]["adminPatientMobileNumber"];
+
+
+
+//Manage Patient Profile From Admin
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Admin\\adminTestData.xls", "Sheet3");
+var $searchPatientEmail = $data[0]["searchPatientEmail"];
+
+
+//Clinic Registration  From Admin
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Admin\\adminTestData.xls", "Sheet4");
+var $clinicName = $data[0]["clinicName"]; 
+var $clinicMLRNumber = $data[0]["clinicMLRNumber"];
+var $clinicEmail = $data[0]["clinicEmail"];
+var $clinicMobileNumber = $data[0]["clinicMobileNumber"];
+	
+	
+	
+
+//Manage Clinic Profile From Admin
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Admin\\adminTestData.xls", "Sheet5");
+var $searchClinicEmail = $data[0]["searchClinicEmail"];
+	
+	
+	
+	
+//Doctor Registration  From Admin
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Admin\\adminTestData.xls", "Sheet6");
+var $doctorFirstName = $data[0]["doctorFirstName"]; 
+var $doctorMiddleName = $data[0]["doctorMiddleName"];
+var $doctorLastName = $data[0]["doctorLastName"];
+var $doctorMLRNumber = $data[0]["doctorMLRNumber"];
+var $doctorEmail = $data[0]["doctorEmail"];
+var $doctorMobileNumber = $data[0]["doctorMobileNumber"];
+
+
+
+//Manage Doctor Profile From Admin
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Admin\\adminTestData.xls", "Sheet7");
+var $searchDoctorEmail = $data[0]["searchDoctorEmail"];
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

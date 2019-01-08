@@ -1,0 +1,31 @@
+function inputDoctorProfileParams($doctorFirstName, $doctorMiddleName, $doctorLastName, $qualification, $collegeName, $graduationYear, $qualification1, $collegeName1, $graduationYear1, $practiceYear,  $doctorSpeciality, $aboutDoctor, $workExperience, $awards, $membership){
+	_click(_link("Profile"));
+	_click(_link("Personal Settings"));
+	_click(_button("Edit"));
+	_setValue(_textbox("name.firstName"), $doctorFirstName);
+	_setValue(_textbox("name.middleName"), $doctorMiddleName);
+	_setValue(_textbox("name.lastName"), $doctorLastName);
+	_check(_radio("radios-0"));
+	_setValue(_textbox("qualifications.qualification"), $qualification);
+	_setValue(_textbox("qualifications.collegeName"), $collegeName);
+	_setValue(_textbox("qualifications.yearOfGraduation"), $graduationYear);
+	_click(_link("Add More"));
+	_setValue(_textbox("qualifications.qualification[1]"), $qualification1);
+	_setValue(_textbox("qualifications.collegeName[1]"), $collegeName1);
+	_setValue(_textbox("qualifications.yearOfGraduation[1]"), $graduationYear1);
+	_setSelected(_select("practiceStartedAt"), $practiceYear);
+	_click(_list("chosen-choices"));
+	_setValue(_textbox("Speciality"), $doctorSpeciality);
+	_click(_listItem("General Physician"));
+	_setValue(_textarea("aboutDoctor"), $aboutDoctor);                                       
+	_setValue(_textarea("workExp"), $workExperience);
+	_setValue(_textarea("awardsRecg"), $awards);
+	_setValue(_textarea("membership"), $membership);
+	_click(_submit("Save"));
+}
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\DoctorRepo.sah");
+
+login($doctorusername, $doctorpassword);
+inputDoctorProfileParams($doctorFirstName, $doctorMiddleName, $doctorLastName, $qualification, $collegeName, $graduationYear, $qualification1, $collegeName1, $graduationYear1, $practiceYear,  $doctorSpeciality, $aboutDoctor, $workExperience, $awards, $membership);

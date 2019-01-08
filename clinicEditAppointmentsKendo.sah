@@ -1,0 +1,29 @@
+function editAppointmentKendoParams($editKendoReasonForVisit){
+	_wait(2000);
+	_click(_link(2));
+	_click(_span("Appointment"));
+	_click(_link(2));
+	var $doc1 = "Dr. testdoctor";
+	_set($doc1, document.getElementById("count9").doc);
+	_click(_paragraph("demopatient test 09:00 PM - 09:30 PM"));
+	_click(_link("Edit Appointment[1]"));
+	_click(_span("k-icon k-i-calendar[1]"));
+	_setValue(_textarea("description"), $editKendoReasonForVisit);
+	//_click(_link("23"));      To change for future day/s
+	_click(_link("Save[1]"));
+}
+
+_include("..\\Library\\Repository\\ClinicRepo.sah");
+_include("..\\Library\\Functions\\login.sah");
+
+login($clinicusername, $clinicpassword);
+
+editAppointmentKendoParams($editKendoReasonForVisit);
+
+
+
+
+
+
+
+

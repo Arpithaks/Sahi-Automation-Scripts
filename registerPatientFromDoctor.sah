@@ -1,0 +1,20 @@
+function inputPatientRegistrationFromDoctorParams($docPatientFirstName, $docPatientMiddleName, $docPatientLastName, $docPatientEmail, $docPatientMobileNumber, $expectedstring){
+	_click(_link("Patients"));
+	_click(_link("Register New"));
+	_setValue(_textbox("name.firstName"), $docPatientFirstName);
+	_setValue(_textbox("name.middleName"), $docPatientMiddleName);
+	_setValue(_textbox("name.lastName"), $docPatientLastName);
+	_setValue(_textbox("email"), $docPatientEmail);
+	_setValue(_textbox("mobileNo"), $docPatientMobileNumber);
+	_click(_submit("Register"));
+	_assertExists(_div($expectedstring));
+	_assertVisible(_div($expectedstring));
+}
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\DoctorRepo.sah");
+
+login($doctorusername, $doctorpassword);
+inputPatientRegistrationFromDoctorParams($docPatientFirstName, $docPatientMiddleName, $docPatientLastName, $docPatientEmail, $docPatientMobileNumber, "User has Register successfully");
+
+

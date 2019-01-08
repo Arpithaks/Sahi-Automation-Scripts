@@ -1,0 +1,37 @@
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+var $data = _getExcel("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet7");
+var $getData = $data.getData();
+
+for($i=1; $i<$getData.length; $i++)
+{
+	var $users = parseInt($users);
+	if($users == $i)
+	{
+		var $multiUploadedFileList = $getData[$i][0];
+		uploadPatientRecordParams($multiUploadedFileList, "File Uploaded Successfully");
+	}
+}
+
+function uploadPatientRecordParams($multiUploadedFileList, $expectedstring){
+	_click(_span("My Health Records"));
+	_click(_span("Upload Records"));
+	_setValue(_radio("recordType[2]"), "2");
+	_click(_span("Add files..."));
+	_setFile2(_file("multiUploadedFileList"), $multiUploadedFileList);
+	_click(_span("Upload"));
+	_assertExists(_span($expectedstring));
+	_assertVisible(_span($expectedstring));
+	_assertEqual($expectedstring, _getText(_span($expectedstring)));
+	_assertContainsText($expectedstring, _span($expectedstring));
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+function registerSilverPatientInputParams($silverPatientFirstName, $silverPatientMiddleName, $silverPatientLastName, $silverPatientEmail, $silverPatientMobileNumber, $silverPatientPassword, $silverPatientConfirmPassword,  $expectedstring3){
+	_click(_link("Register"));
+	_click(_link("Subscriber"));
+	_setValue(_radio(0,_in(_listItem("SILVER",_in(_list("packages"))))),"SILVER");
+	//_setValue(_radio("subscriberPackage[2]"), "SILVER");
+	//_setValue(_radio("subscriberPackage[2]"), "2");
+	_setValue(_textbox("name.firstName"), $silverPatientFirstName);
+	_setValue(_textbox("name.middleName"), $silverPatientMiddleName);
+	_setValue(_textbox("name.lastName"), $silverPatientLastName);
+	_setValue(_textbox("email"), $silverPatientEmail);
+	_setValue(_textbox("mobileNo"), $silverPatientMobileNumber);
+	_setValue(_password("password"), $silverPatientPassword);
+	_setValue(_password("PLATINUM[1]"), $silverPatientConfirmPassword);
+	_click(_submit("Verify"));
+	_click(_div("Otp has been sent successfully"));
+	var $db = _getDB("com.mysql.jdbc.Driver","jdbc:mysql://localhost/datalife?allowMultiQueries=true&sessionVariables=sql_mode=NO_BACKSLASH_ESCAPES","root","root");
+	var $rs = $db.select("select OTP from user");
+	_log($rs.length);
+	var $length= $rs.length-1;
+	var $row = $rs[$length][0];
+	_log($row);
+	_setValue(_password("otp"), $row);
+	_click(_submit("Activate"));
+	_assertExists(_bold($expectedstring3));
+	_assertVisible(_bold($expectedstring3));
+	_assertEqual($expectedstring3, _getText(_bold($expectedstring3)));
+	_assertContainsText($expectedstring3, _bold($expectedstring3));
+}
+
+_include("..\\Library\\Repository\\PatientRepo.sah");
+registerSilverPatientInputParams($silverPatientFirstName, $silverPatientMiddleName, $silverPatientLastName, $silverPatientEmail, $silverPatientMobileNumber, $silverPatientPassword, $silverPatientConfirmPassword,  $expectedstring3);
+

@@ -1,0 +1,32 @@
+function registerCouponPatientInputParams($couponID, $couponPatientFirstName, $couponPatientMiddleName, $couponPatientLastName, $couponPatientEmail, $couponPatientMobileNumber, $couponPatientPassword, $couponPatientConfirmPassword,  $expectedstring4){
+	_click(_link("Register"));
+	_click(_link("Subscriber"));
+	_setValue(_radio(0,_in(_listItem("COUPON",_in(_list("packages"))))),"COUPON");
+	//_setValue(_radio("subscriberPackage[3]"), "COUPON");
+	//_setValue(_radio("subscriberPackage[3]"), "3");
+	_setValue(_textbox("paymentId"), $couponID);
+	_setValue(_textbox("name.firstName"), $couponPatientFirstName);
+	_setValue(_textbox("name.middleName"), $couponPatientMiddleName);
+	_setValue(_textbox("name.lastName"), $couponPatientLastName);
+	_setValue(_textbox("email"), $couponPatientEmail);
+	_setValue(_textbox("mobileNo"), $couponPatientMobileNumber);
+	_setValue(_password("password"), $couponPatientPassword);
+	_setValue(_password("PLATINUM[1]"), $couponPatientConfirmPassword);
+	_click(_submit("Verify"));
+	_click(_password("otp"));
+	var $db = _getDB("com.mysql.jdbc.Driver","jdbc:mysql://localhost/datalife?allowMultiQueries=true&sessionVariables=sql_mode=NO_BACKSLASH_ESCAPES","root","root");
+	var $rs = $db.select("select OTP from user");
+	_log($rs.length);
+	var $length= $rs.length-1;
+	var $row = $rs[$length][0];
+	_log($row);
+	_setValue(_password("otp"), $row);
+	_click(_submit("Activate"));
+	_assertExists(_bold($expectedstring4));
+	_assertVisible(_bold($expectedstring4));
+	_assertEqual($expectedstring4, _getText(_bold($expectedstring4)));
+	_assertContainsText($expectedstring4, _bold($expectedstring4));
+}
+	
+_include("..\\Library\\Repository\\PatientRepo.sah");
+registerCouponPatientInputParams($couponID, $couponPatientFirstName, $couponPatientMiddleName, $couponPatientLastName, $couponPatientEmail, $couponPatientMobileNumber, $couponPatientPassword, $couponPatientConfirmPassword,  $expectedstring4);

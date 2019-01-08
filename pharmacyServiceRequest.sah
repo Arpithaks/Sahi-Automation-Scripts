@@ -1,0 +1,50 @@
+function pharmacyServiceRequestInputParams($pharmacyRecordType, $pharmacyProductName, $pharmacyProductQuantity, $pharmacyProductName1, $pharmacyProductQuantity1, $pharmacyProductName2, $pharmacyProductQuantity2, $pharmacyPreferredCountry, $pharmacyPreferredState, $pharmacyPreferredCity, $pharmacyPreferredLocation, $pharmacyPreferredAddress, $pharmacyZipCode, $pharmacyPreferredDate, $pharmacyPreferredTime, $pharmacyDescription, $expectedstring){
+	_click(_span("Service Request"));
+	_click(_span("Pharmacy"));
+	_setValue(_radio("recordType[3]"), $pharmacyRecordType);
+	//_setValue(_radio(0,_in(_listItem("PRESCRIPTION",_in(_list("square-radio-2"))))),"PRESCRIPTION");
+	_check(_checkbox("sharedRecords.recordId"));
+	_check(_checkbox("sharedRecords.recordId[1]"));
+	_click(_button("Next"));
+	_setValue(_textbox("textinput"), $pharmacyProductName);
+	_setValue(_numberbox("quantity"), $pharmacyProductQuantity);
+	_click(_link("Add Product"));
+	_setValue(_textbox("textinput"), $pharmacyProductName1);
+	_setValue(_numberbox("quantity"), $pharmacyProductQuantity1);
+	_click(_link("Add Product"));
+	_setValue(_textbox("textinput"), $pharmacyProductName2);
+	_setValue(_numberbox("quantity"), $pharmacyProductQuantity2);
+	_click(_link("Add Product"));
+	_click(_button("Next"));
+	_click(_button("Add New Address"));
+	_setSelected(_select("address.country"), $pharmacyPreferredCountry);
+	_setSelected(_select("address.state"), $pharmacyPreferredState);
+	_setSelected(_select("address.city"), $pharmacyPreferredCity);
+	_setValue(_textbox("address.location"), $pharmacyPreferredLocation);
+	_setValue(_textarea("address.fullAddress"), $pharmacyPreferredAddress);
+	_setValue(_textbox("address.zipCode"), $pharmacyZipCode);
+	_setValue(_textbox("preferredDate"), $pharmacyPreferredDate);
+	_setSelected(_select("preferredTime"), $pharmacyPreferredTime);
+	_setValue(_textarea("description"), $pharmacyDescription);
+	_click(_button("Next"));
+	_check(_checkbox("terms"));
+	_click(_submit("Submit Request"));
+	_assertEqual($expectedstring, _getText(_bold($expectedstring)));
+	_assertContainsText($expectedstring, _bold($expectedstring));
+}
+	
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+pharmacyServiceRequestInputParams($pharmacyRecordType, $pharmacyProductName, $pharmacyProductQuantity, $pharmacyProductName1, $pharmacyProductQuantity1, $pharmacyProductName2, $pharmacyProductQuantity2, $pharmacyPreferredCountry, $pharmacyPreferredState, $pharmacyPreferredCity, $pharmacyPreferredLocation, $pharmacyPreferredAddress, $pharmacyZipCode, $pharmacyPreferredDate, $pharmacyPreferredTime, $pharmacyDescription, "Your Pharmacy Service request has been submitted successfully.Our customer care will get back to you shortly!");
+
+
+
+
+
+
+
+
+
+
+

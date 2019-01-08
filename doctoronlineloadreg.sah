@@ -1,0 +1,53 @@
+_include("..\\Library\\Repository\\DoctorRepo.sah");
+
+var $data = _getExcel("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Doctor\\doctorTestData.xls", "Sheet1");
+var $getData= $data.getData();
+
+for($i=1; $i<$getData.length; $i++)
+{
+	var $users= parseInt($users);
+	if($users==$i)
+	{
+		var $doctorFirstName = $getData[$i][0]; 
+		var $doctorMiddleName = $getData[$i][1]; 
+		var $doctorLastName = $getData[$i][2]; 
+		var $doctorMLRNumber = $getData[$i][3]; 
+		var $doctorEmail = $getData[$i][4]; 
+		var $doctorMobileNumber = $getData[$i][5]; 
+		var $doctorPassword = $getData[$i][6];
+		var $doctorConfirmPassword = $getData[$i][7];
+		var $doctorCardNumber	= $getData[$i][8];
+		var $doctorCardExpiry = $getData[$i][9];
+		var $doctorcardCVV = $getData[$i][10];
+		var $expectedstring = $getData[$i][11];
+		registerDoctorInputParams($doctorFirstName, $doctorMiddleName, $doctorLastName, $doctorMLRNumber, $doctorEmail, $doctorMobileNumber, $doctorPassword, $doctorConfirmPassword, $doctorCardNumber, $doctorCardExpiry, $doctorcardCVV, $expectedstring);
+	}
+}
+function registerDoctorInputParams($doctorFirstName, $doctorMiddleName, $doctorLastName, $doctorMLRNumber, $doctorEmail, $doctorMobileNumber, $doctorPassword, $doctorConfirmPassword, $doctorCardNumber, $doctorCardExpiry, $doctorcardCVV, $expectedstring){
+	_click(_link("Register"));
+	_click(_link("Doctor"));
+	_setValue(_textbox("name.firstName"), $doctorFirstName);
+	_setValue(_textbox("name.middleName"), $doctorMiddleName);
+	_setValue(_textbox("name.lastName"), $doctorLastName);
+	_setValue(_textbox("mlNumber"), $doctorMLRNumber);
+	_setValue(_textbox("email"), $doctorEmail);
+	_setValue(_textbox("mobileNo"), $doctorMobileNumber);
+	_setValue(_password("password"), $doctorPassword);
+	_setValue(_password("ONLINE[1]"), $doctorConfirmPassword);
+	_click(_submit("Pay"));
+	_selectDomain("api.razorpay.com");
+	_click(_italic(""));
+	_setValue(_telephonebox("card[number]"), $doctorCardNumber);
+	_setValue(_textbox("card[expiry]"), $doctorCardExpiry);
+	_setValue(_telephonebox("card[cvv]"), $doctorcardCVV);
+	_click(_span("Verify"));
+	_click(_link("Skip saving card"));
+	_selectDomain();
+	_selectWindow("popup_7WLLUFortQh6Q0");
+	_click(_button("Success"));
+	_selectWindow();
+	_assertExists(_bold($expectedstring));
+	_assertVisible(_bold($expectedstring));
+	_assertEqual($expectedstring, _getText(_bold($expectedstring)));
+	_assertContainsText($expectedstring, _bold($expectedstring));
+}

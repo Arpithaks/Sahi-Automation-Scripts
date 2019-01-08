@@ -1,0 +1,32 @@
+function registerDoctorInputParams($doctorFirstName, $doctorMiddleName, $doctorLastName, $doctorMLRNumber, $doctorEmail, $doctorMobileNumber, $doctorPassword, $doctorConfirmPassword, $doctorCardNumber, $doctorCardExpiry, $doctorcardCVV, $expectedstring){
+	_click(_link("Register"));
+	_click(_link("Doctor"));
+	_setValue(_textbox("name.firstName"), $doctorFirstName);
+	_setValue(_textbox("name.middleName"), $doctorMiddleName);
+	_setValue(_textbox("name.lastName"), $doctorLastName);
+	_setValue(_textbox("mlNumber"), $doctorMLRNumber);
+	_setValue(_textbox("email"), $doctorEmail);
+	_setValue(_textbox("mobileNo"), $doctorMobileNumber);
+	_setValue(_password("password"), $doctorPassword);
+	_setValue(_password("ONLINE[1]"), $doctorConfirmPassword);
+	_click(_submit("Pay"));
+	_selectDomain("api.razorpay.com");
+	_click(_italic(""));
+	_setValue(_telephonebox("card[number]"), $doctorCardNumber);
+	_setValue(_textbox("card[expiry]"), $doctorCardExpiry);
+	_setValue(_telephonebox("card[cvv]"), $doctorcardCVV);
+	_click(_span("Verify"));
+	_click(_link("Skip saving card"));
+	_selectDomain();
+	_selectWindow("popup_7WLLUFortQh6Q0");
+	_click(_button("Success"));
+	_selectWindow();
+	_assertExists(_bold($expectedstring));
+	_assertVisible(_bold($expectedstring));
+	_assertEqual($expectedstring, _getText(_bold($expectedstring)));
+	_assertContainsText($expectedstring, _bold($expectedstring));
+}
+
+_include("..\\Library\\Repository\\DoctorRepo.sah");
+registerDoctorInputParams($doctorFirstName, $doctorMiddleName, $doctorLastName, $doctorMLRNumber, $doctorEmail, $doctorMobileNumber, $doctorPassword, $doctorConfirmPassword, $doctorCardNumber, $doctorCardExpiry, $doctorcardCVV, $expectedstring);
+

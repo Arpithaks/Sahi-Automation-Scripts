@@ -1,0 +1,12 @@
+function login($username, $password){
+	_click(_link("Login"));
+	_setValue(_textbox("username"), $username);
+	_setValue(_password("password"), $password);
+	_click(_submit("Sign In"));
+	_click(_image("datalifelogo.jpg"));
+	_assertExists(_image("datalifelogo.jpg"));	
+}
+
+
+
+// ..\Library\Functions\login.sah ->Login.sah path in .csv file

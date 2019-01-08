@@ -1,0 +1,39 @@
+function inputClinicDoctorAppointmentSettingsParams($selectDoctor, $effectFromDate, $timeInterval, $consultationFees){ 
+	_click(_span("Manage Staff"));
+	_click(_span("Appointment Settings"));
+	_click(_span("Select Doctor"));
+	_click(_listItem("Dr. kendo one"));
+	_setSelected(_select("doctor.srNo"), $selectDoctor);
+	_click(_button("Edit"));
+	_setValue(_textbox("effectFrom"), $effectFromDate);
+	_click(_div("doctorSetting"));
+	//_click(_label("OFF"));
+	_setStrictVisibilityCheck(true);
+	//_click(_div("doctorSetting",_in(_div("/xdsoft_calendar/"))));
+	_setValue(_textbox("effectFrom"), "22/03/2018");
+	_click(_div("doctorSetting"));
+	_click(_span(0,_in(_div("personaldetails-edit"))))
+	//_click(_span("Choose Time Interval..."));
+	//_setSelected(_select("slotIntervals"), $timeInterval);
+	//_click(_link("00:30"));
+	_setValue(_textbox("slotIntervals"), $timeInterval);
+	_setValue(_textbox("consultationFee"), $consultationFees);
+	_setSelected(_select("currency"), "INR");
+	_click(_span("k-icon k-i-arrow-60-down"));
+	_click(_submit("Apply"));
+	//_click(_label("Open"));
+	_check(_checkbox("workingHrs.day"));
+	_setValue(_textbox("workingHrs.fromTime"), "08:00 AM");
+	_setValue(_textbox("workingHrs.toTime"), "01:00 PM");
+	_click(_link("Add Hours"));
+	_setValue(_textbox("workingHrs.fromTime[1]"), "02:00 PM");
+	_setValue(_textbox("workingHrs.toTime[1]"), "08:00 PM");
+	_click(_button("Apply to all days"));
+	_click(_submit("Save"));
+}
+
+_include("..\\Library\\Repository\\ClinicRepo.sah");
+_include("..\\Library\\Functions\\login.sah");
+
+login($clinicusername, $clinicpassword);
+inputClinicDoctorAppointmentSettingsParams($selectDoctor, $effectFromDate, $timeInterval, $consultationFees);

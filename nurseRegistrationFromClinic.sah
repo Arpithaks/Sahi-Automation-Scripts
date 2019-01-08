@@ -1,0 +1,28 @@
+function registerNurseFromClinicInputParams($regNurseFirstName, $regNurseMiddleName, $regNurseLastName, $regNurseEmail, $regNurseMobile, $expectedstring){
+	_click(_link("Manage Staff"));
+	_click(_span("Register Nurse"));
+	_setValue(_textbox("nurses.name.firstName"), $regNurseFirstName);
+	_setValue(_textbox("nurses.name.middleName"), $regNurseMiddleName);
+	_setValue(_textbox("nurses.name.lastName"), $regNurseLastName);
+	_setValue(_textbox("nurses.email"), $regNurseEmail);
+	_setValue(_textbox("nurses.mobileNo"), $regNurseMobile);
+	_click(_submit("Register"));
+	_assertExists(_div($expectedstring));
+	_assertVisible(_div($expectedstring));
+}
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\ClinicRepo.sah");
+
+login($clinicusername, $clinicpassword);
+registerNurseFromClinicInputParams($regNurseFirstName, $regNurseMiddleName, $regNurseLastName, $regNurseEmail, $regNurseMobile, "User has Register successfully");
+
+
+
+
+
+
+
+
+
+

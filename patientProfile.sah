@@ -1,0 +1,33 @@
+function inputPatientProfileParams($patientFirstName, $middleName, $patientLastName, $patientDOB, $patientBloodGroup, $patientIdentityDetails, $patientEmergencyContactName, $patientEmergencyContactNumber, $country, $state, $city, $patientLocation, $patientAddress, $zipCode, $insuranceProvider, $insurancePolicyNumber, $insuranceValidity, $language, $religion, $policeStation){
+	_click(_span("Personal Details"));
+	_click(_link("My Profile"));
+	_click(_button("Edit"));
+	_setValue(_textbox("name.firstName"), $patientFirstName);
+	_setValue(_textbox("name.middleName"), $middleName);
+	_setValue(_textbox("name.lastName"), $patientLastName);
+	_setValue(_textbox("dob"), $patientDOB);
+	_check(_radio("1"));
+	_setSelected(_select("bloodGrp"), $patientBloodGroup);
+	_check(_radio("maritalStatus[1]"));
+	_setValue(_textbox("identityDetail.idCardValue"), $patientIdentityDetails);
+	_setValue(_textbox("emgContName"), $patientEmergencyContactName);
+	_setValue(_textbox("emgMobileNo"), $patientEmergencyContactNumber);
+	_setSelected(_select("address.country"), $country);
+	_setSelected(_select("address.state"), $state);
+	_setSelected(_select("address.city"), $city);
+	_setValue(_textbox("address.location"), $patientLocation);
+	_setValue(_textarea("address.fullAddress"), $patientAddress);
+	_setValue(_textbox("address.zipCode"), $zipCode);
+	_setSelected(_select("insuranceDetail.provider"), $insuranceProvider);
+	_setValue(_textbox("insuranceDetail.policyNo"), $insurancePolicyNumber);
+	_setValue(_textbox("insuranceDetail.validity"), $insuranceValidity);
+	_setSelected(_select("languages"), $language);
+	_setSelected(_select("religion"), $religion);
+	_setValue(_textbox("nearestPoliceStn"), $policeStation);
+	_click(_submit("Save"));
+}
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+inputPatientProfileParams($patientFirstName, $middleName, $patientLastName, $patientDOB, $patientBloodGroup, $patientIdentityDetails, $patientEmergencyContactName, $patientEmergencyContactNumber, $country, $state, $city, $patientLocation, $patientAddress, $zipCode, $insuranceProvider, $insurancePolicyNumber, $insuranceValidity, $language, $religion, $policeStation);

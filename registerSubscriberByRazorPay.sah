@@ -1,0 +1,69 @@
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+var $data = _getExcel("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet2");
+var $getData = $data.getData();
+
+for($i=1; $i<$getData.length; $i++)
+{
+	var $users = parseInt($users);
+	if($users == $i)
+	{
+		var $razorpayPatientFirstName = $getData[$i][0];
+		var $razorpayPatientMiddleName = $getData[$i][1];
+		var $razorpayPatientLastName = $getData[$i][2];
+		var $razorpayPatientEmail = $getData[$i][3];
+		var $razorpayPatientMobileNumber = $getData[$i][4];
+		var $razorpayPatientPassword = $getData[$i][5];
+		var $razorpayPatientConfirmPassword = $getData[$i][6];
+		var $razorpayPatientCardNumber = $getData[$i][7];
+		var $razorpayPatientCardExpiry = $getData[$i][8];
+		var $razorpayPatientcardCVV = $getData[$i][9];
+		var $expectedstring2 = $getData[$i][10];
+		registerRazorpayPatientInputParams($razorpayPatientFirstName, $razorpayPatientMiddleName, $razorpayPatientLastName, $razorpayPatientEmail, $razorpayPatientMobileNumber, $razorpayPatientPassword, $razorpayPatientConfirmPassword, $razorpayPatientCardNumber, $razorpayPatientCardExpiry, $razorpayPatientcardCVV, $expectedstring2);
+	}
+}
+
+function registerRazorpayPatientInputParams($razorpayPatientFirstName, $razorpayPatientMiddleName, $razorpayPatientLastName, $razorpayPatientEmail, $razorpayPatientMobileNumber, $razorpayPatientPassword, $razorpayPatientConfirmPassword, $razorpayPatientCardNumber, $razorpayPatientCardExpiry, $razorpayPatientcardCVV, $expectedstring2){
+	_click(_link("Register"));
+	_click(_link("Subscriber"));
+	_setValue(_radio(0,_in(_listItem("Datalife Basic",_in(_list("packages"))))),"Datalife Basic");
+	//_setValue(_radio("subscriberPackage[1]"), "razorpay");
+	//_setValue(_radio("subscriberPackage[1]"), "1");
+	_setValue(_textbox("name.firstName"), $razorpayPatientFirstName);
+	_setValue(_textbox("name.middleName"), $razorpayPatientMiddleName);
+	_setValue(_textbox("name.lastName"), $razorpayPatientLastName);
+	_setValue(_textbox("email"), $razorpayPatientEmail);
+	_setValue(_textbox("mobileNo"), $razorpayPatientMobileNumber);
+	_setValue(_password("password"), $razorpayPatientPassword);
+	_setValue(_password("Datalife Basic[1]"), $razorpayPatientConfirmPassword);
+	_click(_submit("Proceed to Pay"));
+	_click(_image("DataLife[1]"));
+	_selectDomain("api.razorpay.com");
+	_click(_italic(""));
+	_setValue(_telephonebox("card[number]"), $razorpayPatientCardNumber);
+	_setValue(_textbox("card[expiry]"), $razorpayPatientCardExpiry);
+	_setValue(_telephonebox("card[cvv]"), $razorpayPatientcardCVV);
+	_click(_span("Verify"));
+	_click(_link("Skip saving card"));
+	_click(_div("DataLife"));
+//	_selectWindow("popup_7N8FGQMQvQPzeT");
+	_selectDomain();
+	_selectWindow("/popup/");
+	var $link=_call(window.location.href)
+	_log($link);
+	_click(_submit("Success"));
+	_wait(5000);
+	_assertExists(_bold($expectedstring2));
+	_assertVisible(_bold($expectedstring2));
+	_assertEqual($expectedstring2, _getText(_bold($expectedstring2)));
+	_assertContainsText($expectedstring2, _bold($expectedstring2));
+}
+
+
+
+
+
+
+
+
+

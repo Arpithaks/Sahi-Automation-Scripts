@@ -1,0 +1,39 @@
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+var $data = _getExcel("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet17");
+var $getData = $data.getData();
+
+for($i=1; $i<$getData.length; $i++)
+{
+	var $users = parseInt($users);
+	if($users == $i)
+	{
+		var $selectBodyPart = $getData[$i][0];
+		var $selectSpecificPart = $getData[$i][1];
+		var $drugName = $getData[$i][2];
+		var $drugName1 = $getData[$i][3];
+		symptomsCheckerAndDrugSideEffectsInputParams($selectBodyPart, $selectSpecificPart, $drugName, $drugName1);
+	}
+}
+
+function symptomsCheckerAndDrugSideEffectsInputParams($selectBodyPart, $selectSpecificPart, $drugName, $drugName1){
+	_click(_span("Symptoms / Drugs"));
+	_click(_link("Symptoms Checker"));
+	_click(_area("javascript:void(0)"));
+	//_click(_area("javascript:void(0)[1]"));
+	_click(_listItem($selectBodyPart));
+	_click(_listItem($selectSpecificPart));
+	_check(_checkbox("on"));
+	_click(_button("Analyze disease pattern"));
+	_click(_span("Symptoms / Drugs"));
+	_click(_link("Drug Side Effects"));
+	_setValue(_textbox("searchField"), $drugName);
+	_click(_link($drugName1));
+}
+
+
+
+
+
+

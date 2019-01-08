@@ -1,0 +1,40 @@
+function inputDoctorAppointmentSettingsParams($visitingClinicName, $doctorAssociateClinicLocation, $clinicAddress, $zipCode, $consultationFees){
+	_click(_link("Profile"));
+	_click(_span("Appointment Settings"));
+	_click(_span("Select Visiting Clinic"));
+	_click(_listItem("Bingi's heart care"));
+	_click(_button("Edit"));
+	_setValue(_textbox("associatedClinic.assClcName"), $visitingClinicName);
+	_click(_span("India"));
+	_click(_listItem("India"));
+	_click(_link("Karnataka"));
+	_click(_listItem("Karnataka"));
+	_click(_link("Bengaluru"));
+	_click(_listItem("Bengaluru"));
+	_setValue(_textbox("address.location"), $doctorAssociateClinicLocation);
+	_setValue(_textarea("associatedClinic.address.fullAddress"), $clinicAddress);
+	_setValue(_textbox("associatedClinic.address.zipCode"), $zipCode);
+	_click(_textbox("effectFrom"));
+	_setStrictVisibilityCheck(true);
+	_setValue(_textbox("effectFrom"), "31/08/2017");
+	//_click(_span(0,_in(_div("personaldetails-edit"))));
+	_click(_listItem("30 min"));
+	_setValue(_textbox("consultationFee"), $consultationFees);
+	_check(_checkbox("workingHrs.day[1]"));
+	_click(_link("08:00 AM"));
+	_click(_link("09:00 AM"));
+	_check(_checkbox("workingHrs.day[3]"));
+	_click(_link("08:00 AM"));
+	_click(_link("09:00 AM"));
+	_check(_checkbox("workingHrs.day[5]"));
+	_click(_link("08:00 AM"));
+	_click(_link("09:00 AM"));
+	_click(_submit("Save"));
+}
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\DoctorRepo.sah");
+
+login($doctorusername, $doctorpassword);
+inputDoctorAppointmentSettingsParams($visitingClinicName, $doctorAssociateClinicLocation, $clinicAddress, $zipCode, $consultationFees);
+

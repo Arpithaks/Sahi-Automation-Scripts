@@ -1,0 +1,50 @@
+//Nurse Login
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Nurse\\nurseTestData.xls", "Sheet1");
+var $nurseusername = $data[0]["nurseusername"];
+var $nursepassword = $data[0]["nursepassword"];
+
+
+//Nurse Profile
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Nurse\\nurseTestData.xls", "Sheet2");
+var $nurseFirstName  = $data[0]["nurseFirstName"];
+var $nurseMiddleName = $data[0]["nurseMiddleName"];
+var $nurseLastName  = $data[0]["nurseLastName"];
+var $nurseQualification = $data[0]["nurseQualification"];
+var $nurseCollegeName = $data[0]["nurseCollegeName"]; 
+var $nurseGraduationYear  =$data[0]["nurseGraduationYear"];
+var $nurseStartOfPractice = $data[0]["nurseStartOfPractice"];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

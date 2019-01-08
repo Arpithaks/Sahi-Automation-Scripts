@@ -1,0 +1,22 @@
+function nurseProfileInputParams($nurseFirstName, $nurseMiddleName, $nurseLastName, $nurseQualification, $nurseCollegeName, $nurseGraduationYear, $nurseStartOfPractice){
+	_click(_span("Profile"));
+	_click(_button("Edit"));
+	_setValue(_textbox("name.firstName"), $nurseFirstName);
+	_setValue(_textbox("name.middleName"), $nurseMiddleName);
+	_setValue(_textbox("name.lastName"), $nurseLastName);
+	_check(_radio("Male"));
+	_setValue(_textbox("qualifications.qualification"), $nurseQualification);
+	_setValue(_textbox("qualifications.collegeName"), $nurseCollegeName);
+	_setValue(_textbox("qualifications.yearOfGraduation"), $nurseGraduationYear);
+	_click(_span("2012"));
+	_setValue(_textbox("Start of Practice"), $nurseStartOfPractice);
+	_click(_listItem("2009"));
+	_click(_div("boxshadow"));
+	_click(_submit("Save"));
+}
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\NurseRepo.sah");
+
+login($nurseusername, $nursepassword);
+nurseProfileInputParams($nurseFirstName, $nurseMiddleName, $nurseLastName, $nurseQualification, $nurseCollegeName, $nurseGraduationYear, $nurseStartOfPractice);

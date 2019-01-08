@@ -1,0 +1,118 @@
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+var $data = _getExcel("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet9");
+var $getData = $data.getData();
+
+for($i=1; $i<$getData.length; $i++)
+{
+	var $users = parseInt($users);
+	if($users == $i)
+	{
+		var $BPrecordDate = $getData[$i][0];
+		var $BPsystolic = $getData[$i][1];
+		var $BPdiastolic = $getData[$i][2];
+		var $tempRecorddate = $getData[$i][3];
+		var $tempValue = $getData[$i][4];
+		var $pulseRecorddate = $getData[$i][5];
+		var $pulseValue = $getData[$i][6];
+		var $respRecordDate = $getData[$i][7];
+		var $respValue = $getData[$i][8];
+		var $RBSrecordDate = $getData[$i][9];
+		var $RBSValue = $getData[$i][10];
+		var $BMIrecordDate = $getData[$i][11];
+		var $height_feet = $getData[$i][12];
+		var $height_inches = $getData[$i][13];
+		var $weight = $getData[$i][14];
+		bloodPressureVitalsParams($BPrecordDate, $BPsystolic, $BPdiastolic);
+		temperatureVitalsParams($tempRecorddate, $tempValue);
+		pulseRateVitalsParams($pulseRecorddate, $pulseValue);
+		respiratoryRateVitalsParams($respRecordDate, $respValue);
+		randomBloodSugarVitalsParams($RBSrecordDate, $RBSValue);
+		bodyMassIndexVitalsParams($BMIrecordDate, $height_feet, $height_inches, $weight);
+	}
+}
+
+function bloodPressureVitalsParams($BPrecordDate, $BPsystolic, $BPdiastolic, $expectedstring){
+	_click(_link("My Vitals"));
+	_setValue(_textbox("recordedDate1"), $BPrecordDate);
+	_setValue(_textbox("systolic"), $BPsystolic);
+	_setValue(_textbox("diastolic"), $BPdiastolic);
+	_click(_submit("Save[1]"));
+	_assertExists(_div("Saved Successfully"));
+	_assertVisible(_div("Saved Successfully"));
+	_click(_button("View Graph[1]"));
+}
+
+function temperatureVitalsParams($tempRecorddate, $tempValue, $expectedstring1){
+	_click(_span("Temperature"));
+	_setValue(_textbox("recordedDate"), $tempRecorddate);
+	_setValue(_textbox("value"), $tempValue);
+	_click(_submit("Save"));
+	_assertExists(_div("Saved Successfully"));
+	_assertVisible(_div("Saved Successfully"));
+	_click(_span("Temperature"));
+	_click(_button("View Graph"));
+}
+	
+function pulseRateVitalsParams($pulseRecorddate, $pulseValue, $expectedstring2){
+	_click(_span("Pulse Rate"));
+	_setValue(_textbox("recordedDate2"), $pulseRecorddate);
+	_setValue(_textbox("pulseValue"), $pulseValue);
+	_click(_submit("Save[2]"));
+	_assertExists(_div("Saved Successfully"));
+	_click(_span("Pulse Rate"));
+	_click(_button("View Graph[2]"));
+}
+	
+function respiratoryRateVitalsParams($respRecordDate, $respValue, $expectedstring3){
+	_click(_span("Respiratory Rate"));
+	_setValue(_textbox("recordedDate3"), $respRecordDate);
+	_setValue(_textbox("respValue"), $respValue);
+	_click(_submit("Save[3]"));
+	_assertExists(_div("Saved Successfully"));
+	_assertVisible(_div("Saved Successfully"));
+	_click(_span("Respiratory Rate"));
+	_click(_button("View Graph[3]"));
+}
+	
+function randomBloodSugarVitalsParams($RBSrecordDate, $RBSValue, $expectedstring4){
+	_click(_link("RBS"));
+	_setValue(_textbox("recordedDate4"), $RBSrecordDate);
+	_setValue(_textbox("rbsValue"), $RBSValue);
+	_click(_submit("Save[4]"));
+	_assertExists(_div("Saved Successfully"));
+	_assertVisible(_div("Saved Successfully"));
+	_click(_link("RBS"));
+	_click(_button("View Graph[4]"));
+}
+	
+function bodyMassIndexVitalsParams($BMIrecordDate, $height_feet, $height_inches, $weight, $expectedstring5){
+	_click(_span("BMI"));
+	_setValue(_textbox("recordedDate5"), $BMIrecordDate);
+	_setValue(_textbox("enc_feet"), $height_feet);
+	_setValue(_textbox("enc_inch"), $height_inches);
+	_setValue(_textbox("enc_weight"), $weight);
+	_click(_submit("Save[5]"));
+	_assertExists(_div("Saved Successfully"));
+	_click(_span("BMI"));
+	_click(_button("View Graph[5]"));
+}	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

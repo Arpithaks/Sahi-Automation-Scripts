@@ -1,0 +1,34 @@
+function inputClinicProfileParams($clinicName, $specialization, $telephoneNumber, $country, $state, $city, $clinicLocation, $address, $zipCode, $website, $aboutClinic){
+	_click(_span("Clinic Profile"));
+	_click(_button("Edit"));
+	_setValue(_textbox("clinicName"), $clinicName);
+	_click(_list("chosen-choices"));
+	_click(_listItem("Allergy"));
+	_click(_listItem("Allergy"), $specialization);
+	_setValue(_textbox("telePhoneNo"), $telephoneNumber);
+	_click(_span("India"));
+	_click(_listItem("India"));
+	_setSelected(_select("address.country"), $country);
+	_click(_span("Select State"));
+	_click(_listItem("Karnataka"));
+	_setSelected(_select("address.state"), $state);  
+	_click(_span("Select city"));
+	_click(_listItem("Bengaluru"));
+	_setSelected(_select("address.city"), $city);
+	_setValue(_textbox("address.location"), $clinicLocation);
+	_setValue(_textarea("address.fullAddress"), $address);
+	_setValue(_textbox("address.zipCode"), $zipCode);
+	_setValue(_textbox("webSite"), $website);
+	_setValue(_textarea("aboutClinic"),  $aboutClinic);
+	_click(_listItem("Hypertension Treatment"));
+	_click(_listItem("Specialised Dialysis Unit"));
+	_click(_submit("Save"));
+}
+
+_include("..\\Library\\Repository\\ClinicRepo.sah");
+_include("..\\Library\\Functions\\login.sah");
+
+login($clinicusername, $clinicpassword);
+inputClinicProfileParams($clinicName, $specialization, $telephoneNumber, $country, $state, $city, $clinicLocation, $address, $zipCode, $website, $aboutClinic);
+
+

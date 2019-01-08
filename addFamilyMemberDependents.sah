@@ -1,0 +1,17 @@
+function addFamilyMemberDependentInputParams($dependentFirstName, $dependentMiddleName, $dependentLastName, $dependentDOB, $dependentRelation, $expectedstring){
+	_click(_span("Personal Details"));
+	_click(_link("Add Family Member"));
+	_setValue(_textbox("name.firstName"), $dependentFirstName);
+	_setValue(_textbox("name.middleName"), $dependentMiddleName);
+	_setValue(_textbox("name.lastName"), $dependentLastName);
+	_call(_textbox("dob").value=$dependentDOB);
+	_setSelected(_select("relation"), $dependentRelation);
+	_click(_submit("Save"));
+	_assertEqual($expectedstring, _getText(_div($expectedstring)));
+	_assertContainsText($expectedstring, _bold($expectedstring));
+}
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+addFamilyMemberDependentInputParams($dependentFirstName, $dependentMiddleName, $dependentLastName, $dependentDOB, $dependentRelation, "User has Register successfully");

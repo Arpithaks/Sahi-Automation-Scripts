@@ -1,0 +1,26 @@
+function cancelAppointmentKendoParams(){
+	_wait(2000);
+	_click(_link(2));
+	_click(_span("Appointment"));
+	_click(_link(2));
+	var $doc2 = "Dr. testdoctor";
+	_set($doc2, document.getElementById("count9").doc);
+	_click(_paragraph("demopatient test 09:00 PM - 09:30 PM"));
+	_click(_link("Cancel Appointment[1]"));
+	_click(_span("Select item"));
+	_click(_listItem("Doctor"));
+	_click(_label("Notify Doctor"));
+	_click(_label("Notify Patient"));
+	_click(_link("Save"));
+
+}
+
+_include("..\\Library\\Repository\\ClinicRepo.sah");
+_include("..\\Library\\Functions\\login.sah");
+
+login($clinicusername, $clinicpassword);
+
+cancelAppointmentKendoParams();
+
+
+

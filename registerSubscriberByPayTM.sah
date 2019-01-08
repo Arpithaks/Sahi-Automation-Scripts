@@ -1,0 +1,46 @@
+function registerPaytmPatientInputParams($paytmPatientFirstName, $paytmPatientMiddleName, $paytmPatientLastName, $paytmPatientEmail, $paytmPatientMobileNumber, $paytmPatientPassword, $paytmPatientConfirmPassword,  $paytmNumber, $paytmOTP, $expectedstring){
+	_click(_link("Register"));
+	_click(_link("Subscriber"));
+	//_setValue(_radio(0,_in(_listItem("Datalife Basic",_in(_list("packages"))))),"Datalife Basic");
+	//_setValue(_radio("subscriptionPackages.packId"), "Datalife Basic");
+	_setValue(_radio("subscriptionPackages.packId"), "0");
+	_setValue(_textbox("name.firstName"), $paytmPatientFirstName);
+	_setValue(_textbox("name.middleName"), $paytmPatientMiddleName);
+	_setValue(_textbox("name.lastName"), $paytmPatientLastName);
+	_setValue(_textbox("email"), $paytmPatientEmail);
+	_setValue(_textbox("mobileNo"), $paytmPatientMobileNumber);
+	_setValue(_password("password"), $paytmPatientPassword);
+	_setValue(_password("Datalife Basic[1]"), $paytmPatientConfirmPassword);
+	_click(_submit("Proceed to Pay"));
+	_click(_image("DataLife[2]"));
+	_click(_button("Yes"));
+	_click(_link("Login"));
+	_selectDomain("accounts-uat.paytm.com");
+	_setValue(_textbox("username"), $paytmNumber);
+	_click(_submit("Request OTP"));
+	_setValue(_textbox("username"), $paytmOTP);
+	_click(_submit("Login"));
+	_selectDomain();
+	_click(_submit("Pay now"));	
+	_assertExists(_paragraph($expectedstring));
+	_assertVisible(_paragraph($expectedstring));
+	_assertEqual($expectedstring, _getText(_paragraph($expectedstring)));
+}	
+	
+_include("..\\Library\\Repository\\PatientRepo.sah");	
+	
+registerPaytmPatientInputParams($paytmPatientFirstName, $paytmPatientMiddleName, $paytmPatientLastName, $paytmPatientEmail, $paytmPatientMobileNumber, $paytmPatientPassword, $paytmPatientConfirmPassword, $paytmNumber, $paytmOTP, "You have successfully completed Registration.");
+	
+	
+	
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		

@@ -1,0 +1,43 @@
+function registerGoldPatientInputParams($goldPatientFirstName, $goldPatientMiddleName, $goldPatientLastName, $goldPatientEmail, $goldPatientMobileNumber, $goldPatientPassword, $goldPatientConfirmPassword, $goldPatientCardNumber, $goldPatientCardExpiry, $goldPatientcardCVV, $expectedstring2){
+	_click(_link("Register"));
+	_click(_link("Subscriber"));
+	_setValue(_radio(0,_in(_listItem("GOLD",_in(_list("packages"))))),"GOLD");
+	//_setValue(_radio("subscriberPackage[1]"), "GOLD");
+	//_setValue(_radio("subscriberPackage[1]"), "1");
+	_setValue(_textbox("name.firstName"), $goldPatientFirstName);
+	_setValue(_textbox("name.middleName"), $goldPatientMiddleName);
+	_setValue(_textbox("name.lastName"), $goldPatientLastName);
+	_setValue(_textbox("email"), $goldPatientEmail);
+	_setValue(_textbox("mobileNo"), $goldPatientMobileNumber);
+	_setValue(_password("password"), $goldPatientPassword);
+	_setValue(_password("PLATINUM[1]"), $goldPatientConfirmPassword);
+	_click(_submit("Pay"));
+	_selectDomain("api.razorpay.com");
+	_click(_italic(""));
+	_setValue(_telephonebox("card[number]"), $goldPatientCardNumber);
+	_setValue(_textbox("card[expiry]"), $goldPatientCardExpiry);
+	_setValue(_telephonebox("card[cvv]"), $goldPatientcardCVV);
+	_click(_span("Verify"));
+	_click(_link("Skip saving card"));
+	_click(_div("DataLife"));
+	_selectWindow("popup_7N8FGQMQvQPzeT");
+	_click(_button("Success"));
+	_assertExists(_bold($expectedstring2));
+	_assertVisible(_bold($expectedstring2));
+	_assertEqual($expectedstring2, _getText(_bold($expectedstring2)));
+	_assertContainsText($expectedstring2, _bold($expectedstring2));
+}
+
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+registerGoldPatientInputParams($goldPatientFirstName, $goldPatientMiddleName, $goldPatientLastName, $goldPatientEmail, $goldPatientMobileNumber, $goldPatientPassword, $goldPatientConfirmPassword, $goldPatientCardNumber, $goldPatientCardExpiry, $goldPatientcardCVV, $expectedstring2);
+
+
+
+
+
+
+
+
+
+

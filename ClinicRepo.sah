@@ -1,0 +1,99 @@
+//Clinic Login
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Clinic\\clinicTestData.xls", "Sheet1");
+var $clinicusername = $data[0]["clinicusername"];
+var $clinicpassword = $data[0]["clinicpassword"];
+
+
+
+//Register New Doctor From Clinic
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Clinic\\clinicTestData.xls", "Sheet2");
+var $doctorFirstName = $data[0]["doctorFirstName"];
+var $doctorMiddleName = $data[0]["doctorMiddleName"];
+var $doctorLastName = $data[0]["doctorLastName"];
+var $doctorRegistrationNumber = $data[0]["doctorRegistrationNumber"];
+var $doctorEmail = $data[0]["doctorEmail"];
+var $doctorMobileNumber = $data[0]["doctorMobileNumber"];
+
+
+
+
+//Clinic profile
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Clinic\\clinicTestData.xls", "Sheet3");
+var $clinicName = $data[0]["clinicName"];
+var $specialization = $data[0]["specialization"];
+var $telephoneNumber  =  $data[0]["telephoneNumber"];
+var $country = $data[0]["country"];
+var $state = $data[0]["state"];
+var $city = $data[0]["city"];
+var $clinicLocation = $data[0]["clinicLocation"];
+var $address = $data[0]["address"];
+var $zipCode = $data[0]["zipCode"];
+var $website = $data[0]["website"]; 
+var $aboutClinic = $data[0]["aboutClinic"];
+
+	
+	
+		
+//Clinic Doctor Appointment Settings
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Clinic\\clinicTestData.xls", "Sheet4");
+var $selectDoctor = $data[0]["selectDoctor"];
+var $effectFromDate = $data[0]["effectFromDate"];
+var $timeInterval = $data[0]["timeInterval"];
+var $consultationFees = $data[0]["consultationFees"];	
+	
+	
+	
+//Clinic Doctor Profile
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Clinic\\clinicTestData.xls", "Sheet5");
+var $clinicDoctorFirstName = $data[0]["clinicDoctorFirstName"];
+var $clinicDoctorMiddleName = $data[0]["clinicDoctorMiddleName"]; 
+var $clinicDoctorLastName = $data[0]["clinicDoctorLastName"];
+var $clinicDoctorQualification = $data[0]["clinicDoctorQualification"];
+var $clinicDoctorCollegeName =$data[0]["clinicDoctorCollegeName"];
+var $clinicDoctorGraduation = $data[0]["clinicDoctorGraduation"];
+var $clinicDoctorStartOfPractice = $data[0]["clinicDoctorStartOfPractice"];
+var $clinicDoctorAbout = $data[0]["clinicDoctorAbout"];
+var $clinicDoctorWorkExp = $data[0]["clinicDoctorWorkExp"]; 
+var $clinicDoctorAwards = $data[0]["clinicDoctorAwards"];
+var $clinicDoctorMembership = $data[0]["clinicDoctorMembership"];
+	
+	
+	
+//Clinic Schedule Appointment Kendo
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Clinic\\clinicTestData.xls", "Sheet6");
+var $clinicAppointmentPatientName = $data[0]["clinicAppointmentPatientName"];
+var $clinicAppointmentReasonForVisit = $data[0]["clinicAppointmentReasonForVisit"];
+	
+	
+//Clinic Edit Appointments Kendo
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Clinic\\clinicTestData.xls", "Sheet7");
+var $editKendoReasonForVisit = $data[0]["editKendoReasonForVisit"];
+
+
+//Clinic Block Appointment Kendo
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Clinic\\clinicTestData.xls", "Sheet8");
+var $clinicBlockAppointmentReasonToLeave = $data[0]["clinicBlockAppointmentReasonToLeave"];
+
+
+//Nurse Registration From Clinic
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Clinic\\clinicTestData.xls", "Sheet9");
+var $regNurseFirstName = $data[0]["regNurseFirstName"];
+var $regNurseMiddleName = $data[0]["regNurseMiddleName"];
+var $regNurseLastName = $data[0]["regNurseLastName"];
+var $regNurseEmail = $data[0]["regNurseEmail"];
+var $regNurseMobile = $data[0]["regNurseMobile"];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

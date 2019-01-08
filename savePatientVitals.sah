@@ -1,0 +1,24 @@
+function savePatientVitalsParams($temperature, $pulseRate, $respiratoryRate, $RBS, $BP_systolic, $BP_diastolic, $height_feet, $height_inches, $weight, $expectedstring){
+	_click(_link("My Vitals"));
+	_click(_link("Save Vitals"));
+	_setValue(_textbox("vitals.value"), $temperature);
+	_setValue(_textbox("vitals.value[1]"), $pulseRate);
+	_setValue(_textbox("vitals.value[2]"), $respiratoryRate);
+	_setValue(_textbox("vitals.value[3]"), $RBS);
+	_setValue(_textbox("enc_systolic"), $BP_systolic);
+	_setValue(_textbox("enc_diastolic"), $BP_diastolic);
+	_setValue(_textbox("enc_feet"), $height_feet);
+	_setValue(_textbox("enc_inch"), $height_inches);
+	_setValue(_textbox("vitals.value[4]"), $weight);
+	_click(_submit("Save"));
+	_assertExists(_div($expectedstring));
+	_assertVisible(_div($expectedstring));
+}	
+
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+login($patientusername, $patientpassword);
+savePatientVitalsParams($temperature, $pulseRate, $respiratoryRate, $RBS, $BP_systolic, $BP_diastolic, $height_feet, $height_inches, $weight, "Saved Successfully");
+	

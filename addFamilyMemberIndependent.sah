@@ -1,0 +1,26 @@
+function addFamilyMemberIndependentInputParams($independentFirstName, $independentMiddleName, $independentLastName, $independentDOB, $independentRelation, $independentMobileNumber, $independentEmailAddress, $expectedstring){
+	_click(_span("Personal Details"));
+	_click(_link("Add Family Member"));
+	_setValue(_textbox("name.firstName"), $independentFirstName);
+	_setValue(_textbox("name.middleName"), $independentMiddleName);
+	_setValue(_textbox("name.lastName"), $independentLastName);
+	_call(_textbox("dob").value= $independentDOB);
+	_wait(500);
+	_click(_textbox("dob"));
+	_wait(500);
+	_click(_cell("/xdsoft_current/"))
+	_setSelected(_select("relation"), $independentRelation);
+	_check(_checkbox("isIndependent"));
+	_setValue(_textbox("mobileNo"), $independentMobileNumber);
+	_setValue(_textbox("email"), $independentEmailAddress);
+	_click(_submit("Save"));
+	_assertEqual($expectedstring, _getText(_div($expectedstring)));
+	_assertContainsText($expectedstring, _bold($expectedstring));
+}
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+addFamilyMemberIndependentInputParams($independentFirstName, $independentMiddleName, $independentLastName, $independentDOB, $independentRelation, $independentMobileNumber, $independentEmailAddress, "User has Register successfully");
+
+

@@ -1,0 +1,157 @@
+function inputDoctorConsultationParams($docPatientName, $icdCode, $icdName, $medicalHistory, $familyHistory, $surgicalHistory, $socialHistory, $riskFactors, $allergies, $pastMedications, 
+	$integumentary, $skeletal, $nervous, $cardiovascular, $endocrine, $muscular, $lymphatic, $respiratory, 	$urinary, $excretory, $reproductive, $digestive, $immune,	
+	$temperature, $pulseRate, $respiratoryRate, $RBS, $bpSystolic, $bpDiastolic, $heightFeet, $heightInches, $weight,
+	$constitutional, $eyes, $mouthEnt, $headNeck, $respiratory1, $cardiovascular1, $chest, $gastrointestinal, $genitourinaryMale, $genitourinaryFemale, $lymphatic1, $musculoskeletal, $skin, $Neurologic, $psychaitric, $extremities, $dental,
+	$drugName, $frequency, $route, $numberOfdays,
+	$procedures, $assessment, $followUp)
+{	
+	_click(_link("Consultation"));
+	_click(_link("EMR"));
+	_setSelected(_select("select_doctorOwnPatients"), $docPatientName);
+	_setValue(_textbox("icdCode"), $icdCode);
+	_setValue(_textbox("icdName"), $icdName);
+	_click(_button("Add"));
+	_click(_heading2("Health History"));
+	_click(_button("Add History"));
+	_setValue(_textarea("edit_mh"), $medicalHistory);
+	_setValue(_textarea("edit_fh"), $familyHistory);
+	_setValue(_textarea("edit_sh"), $surgicalHistory);
+	_setValue(_textarea("edit_sch"), $socialHistory);
+	_setValue(_textarea("edit_rf"), $riskFactors);
+	_setValue(_textarea("edit_all"), $allergies);
+	_setValue(_textarea("edit_pm"), $pastMedications);
+	_click(_button("Submit"));
+	_click(_heading2("Review of Systems"));
+	_click(_link("Integumentary system"));
+	_setValue(_textarea("reviewofSystems.description"), $integumentary);
+	_click(_link("Skeletal system"));												
+	_setValue(_textarea("reviewofSystems.description[1]"), $skeletal);
+	_click(_link("Nervous system"));
+	_setValue(_textarea("reviewofSystems.description[2]"), $nervous);
+	_click(_link("Cardiovascular system"));
+	_setValue(_textarea("reviewofSystems.description[3]"), $cardiovascular);
+	_click(_link("Endocrine system"));
+	_setValue(_textarea("reviewofSystems.description[4]"), $endocrine);
+	_click(_link("Muscular system"));
+	_setValue(_textarea("reviewofSystems.description[5]"), $muscular);
+	_click(_link("Lymphatic system"));
+	_setValue(_textarea("reviewofSystems.description[6]"), $lymphatic);
+	_click(_link("Respiratory system"));
+	_setValue(_textarea("reviewofSystems.description[7]"),  $respiratory);
+	_click(_link("Urinary system"));
+	_setValue(_textarea("reviewofSystems.description[8]"), $urinary);
+	_click(_link("Excretory system"));
+	_setValue(_textarea("reviewofSystems.description[9]"), $excretory);
+	_click(_link("Reproductive system"));
+	_setValue(_textarea("reviewofSystems.description[10]"), $reproductive);
+	_click(_link("Digestive system"));
+	_setValue(_textarea("reviewofSystems.description[11]"), $digestive);
+	_click(_link("Immune system"));
+	_setValue(_textarea("reviewofSystems.description[12]"), $immune);
+	_click(_heading2("Vital Signs"));			
+	_setValue(_numberbox("vitals.value"), $temperature);
+	_setValue(_numberbox("vitals.value[1]"), $pulseRate);
+	_setValue(_numberbox("vitals.value[2]"), $respiratoryRate);
+	_setValue(_numberbox("vitals.value[3]"), $RBS);
+	_setValue(_numberbox("enc_systolic"), $bpSystolic);
+	_setValue(_numberbox("enc_diastolic"), $bpDiastolic);
+	_setValue(_numberbox("enc_feet"), $heightFeet);
+	_setValue(_numberbox("enc_inch"), $heightInches);
+	_setValue(_numberbox("vitals.value[4]"), $weight);
+	_click(_heading2("Physical Examination"));
+	_click(_link("Constitutional"));		
+	_setValue(_textarea("physicalExaminations.description"), $constitutional);
+	_click(_link("Eyes"));
+	_setValue(_textarea("physicalExaminations.description[1]"), $eyes);
+	_click(_link("Mouth & ENT"));
+	_setValue(_textarea("physicalExaminations.description[2]"), $mouthEnt);
+	_click(_link("Head & Neck"));
+	_setValue(_textarea("physicalExaminations.description[3]"), $headNeck);
+	_click(_link("Respiratory"));
+	_setValue(_textarea("physicalExaminations.description[4]"), $respiratory1);
+	_click(_link("Cardiovascular"));
+	_setValue(_textarea("physicalExaminations.description[5]"), $cardiovascular1);
+	_click(_link("Chest"));
+	_setValue(_textarea("physicalExaminations.description[6]"), $chest);
+	_click(_link("Gastrointestinal"));
+	_setValue(_textarea("physicalExaminations.description[7]"), $gastrointestinal);
+	_click(_link("Genitourinary Male"));
+	_setValue(_textarea("physicalExaminations.description[8]"), $genitourinaryMale);
+	_click(_link("Genitourinary Female"));
+	_setValue(_textarea("physicalExaminations.description[9]"), $genitourinaryFemale);
+	_click(_link("Lymphatic"));
+	_setValue(_textarea("physicalExaminations.description[10]"), $lymphatic1);
+	_click(_link("Musculoskeletal"));
+	_setValue(_textarea("physicalExaminations.description[11]"), $musculoskeletal);
+	_click(_link("Skin"));
+	_setValue(_textarea("physicalExaminations.description[12]"), $skin);
+	_click(_link("Neurologic"));
+	_setValue(_textarea("physicalExaminations.description[13]"), $Neurologic);
+	_click(_link("Psychiatric"));
+	_setValue(_textarea("physicalExaminations.description[14]"), $psychaitric);
+	_click(_link("Extremities"));
+	_setValue(_textarea("physicalExaminations.description[15]"), $extremities);
+	_click(_link("Dental"));
+	_setValue(_textarea("physicalExaminations.description[16]"), $dental);
+	_click(_heading2("E-Prescription"));				
+	_setValue(_textbox("drugName"), $drugName);
+	_setValue(_textbox("frequency"), $frequency);
+	_setValue(_textbox("route"), $route);
+	_setValue(_numberbox("quantity"), $numberOfdays);
+	_check(_radio("shift[1]"));
+	_click(_button("Add Rx List"));
+	_click(_heading2("E-Lab Order"));
+	_click(_link("Pathology"));
+	_setSelected(_select("pick_Pathology"), 1);
+	_click(_button("Add[1]"));
+	_click(_link("CT Scans"));
+	_setSelected(_select("pick_CT_Scans"), 1);
+	_click(_button("Add[2]"));
+	_click(_link("MRI"));
+	_setSelected(_select("pick_MRI"), 2);
+	_click(_button("Add[3]"));
+	_click(_link("Gynaecology"));
+	_setSelected(_select("pick_Gynaecology"), 1);
+	_click(_button("Add[4]"));
+	_click(_link("Bariatric"));
+	_setSelected(_select("pick_Bariatric"), 1);
+	_click(_button("Add[5]"));
+	_click(_link("X-Ray & Procedures"));
+	_setSelected(_select("pick_XRay__Procedures"), 1);
+	_click(_button("Add[6]"));
+	_click(_link("Stress Test & 2D Echo"));
+	_setSelected(_select("pick_Stress_Test__2D_Echo"), 1);
+	_click(_button("Add[7]"));
+	_click(_link("Ultrasonography & Doppler"));
+	_setSelected(_select("pick_Ultrasonography__Doppler"), 1);
+	_click(_button("Add[8]"));
+	_click(_heading2("Procedure/s Performed"));						
+	_setValue(_textarea("procedures"), $procedures);
+	_click(_heading2("Assessment / Plan"));
+	_setValue(_textarea("assessment"), $assessment);
+	_click(_heading2("Follow up / Referral"));
+	_setValue(_textarea("followup"), $followUp);
+	_click(_submit("Save"));
+	_assertExists(_div("Consultation Saved Successfully"));
+}
+
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\DoctorRepo.sah");
+
+login($doctorusername, $doctorpassword);
+
+inputDoctorConsultationParams($docPatientName, $icdCode, $icdName, $medicalHistory, $familyHistory, $surgicalHistory, $socialHistory, $riskFactors, $allergies, $pastMedications, 
+	$integumentary, $skeletal, $nervous, $cardiovascular, $endocrine, $muscular, $lymphatic, $respiratory, 	$urinary, $excretory, $reproductive, $digestive, $immune,	
+	$temperature, $pulseRate, $respiratoryRate, $RBS, $bpSystolic, $bpDiastolic, $heightFeet, $heightInches, $weight,
+	$constitutional, $eyes, $mouthEnt, $headNeck, $respiratory1, $cardiovascular1, $chest, $gastrointestinal, $genitourinaryMale, $genitourinaryFemale, $lymphatic1, $musculoskeletal, $skin, $Neurologic, $psychaitric, $extremities, $dental,
+	$drugName, $frequency, $route, $numberOfdays,
+	$procedures, $assessment, $followUp);
+
+
+
+
+
+
+
+	

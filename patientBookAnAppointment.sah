@@ -1,0 +1,34 @@
+function patientBookAnAppointmentParams($location, $doctorName, $scheduledDate, $scheduledTime, $reasonForVisit, $expectedstring){
+	_click(_link("Appointments"));
+	_click(_span("Book Appointment"));
+	_click(_textbox("location"));
+	_click(_div("Btm Layout 1st StageLocality"));
+	_setValue(_textbox("doctorSearch"), "doc");
+	_click(_div("Doctor Name \"doc\""));
+	//var $location = _link("Btm Layout 1st Stage,Bengaluru");
+	//var $bookAppointment = _button("/Book appointment/", _under($location,50));
+	//_click($bookAppointment);
+	_click(_button("Book appointment"));
+	_setStrictVisibilityCheck(true);
+	var $date=_collect("_cell","30");
+	for(var $i=0; $i<$date.length;$i++)
+	{
+		var $b=_getAttribute($date[$i],"class")
+			_log($b)
+				if($b.indexOf("disabled")==-1){
+
+					_click($date[$i]);
+				}
+	}
+	_setStrictVisibilityCheck(false);
+	_click(_link($scheduledTime));
+	_setValue(_textarea("reasonForVisit"), $reasonForVisit);
+	_click(_submit("Confirm Booking"));
+	_assertExists(_div($expectedstring));
+	_assertVisible(_div($expectedstring));
+}
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+patientBookAnAppointmentParams($location, $doctorName, $scheduledDate, $scheduledTime, $reasonForVisit, "Appointment has been scheduled successfully !!!");

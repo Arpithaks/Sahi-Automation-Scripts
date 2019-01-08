@@ -1,0 +1,15 @@
+function viewPatientAppointmentParams($expectedstring){
+	_click(_link("Appointments"));
+	_click(_link("View Appointment"));
+	_click(_link("(want to cancel ?)"));
+//	_click(_link("(want to cancel ?)[2]"));    (It will cancel the 3rd appointment i.e, 0-1-2)
+	_assertExists(_heading4($expectedstring));
+	_assertVisible(_heading4($expectedstring));
+	_click(_button("YES"));
+}
+
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+viewPatientAppointmentParams("Appointment has been cancelled successfully !!!");
+

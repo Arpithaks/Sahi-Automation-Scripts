@@ -1,0 +1,40 @@
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+var $data = _getExcel("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet8");
+var $getData = $data.getData();
+
+for($i=1; $i<$getData.length; $i++)
+{
+	var $users = parseInt($users);
+	if($users == $i)
+	{
+		var $emailAddress = $getData[$i][0];
+		var $emailAddress1 = $getData[$i][1];
+		var $recordType = $getData[$i][2];
+		viewPatientRecordParams($emailAddress, $emailAddress1, "Sent Successfully.", $recordType, "Moved Successfully.");
+	}
+}
+
+function viewPatientRecordParams($emailAddress, $emailAddress1, $expectedstring1, $recordType, $expectedstring2){
+	_click(_span("My Health Records"));
+	_click(_span("View Records"));
+	_check(_checkbox("sharedRecords.recordId"));
+	_click(_button("Share"));
+	_setValue(_textbox("inputEmail-tokenfield"), $emailAddress);
+	_setValue(_textbox("inputEmail-tokenfield"), $emailAddress1);
+	_click(_submit("Send Now"));
+	_assertExists(_div("Sent Successfully."));
+	_assertVisible(_div("Sent Successfully."));
+	_click(_span("×"));
+	_click(_button("Move To"));
+	_setSelected(_select("recordType"), $recordType);
+	_click(_submit("Move Now"));
+	_assertExists(_div("Moved Successfully."));
+	_assertVisible(_div("Moved Successfully."));
+}
+	
+
+
+
+

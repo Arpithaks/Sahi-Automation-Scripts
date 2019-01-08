@@ -1,0 +1,304 @@
+//Platinum patient registration
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet1");
+var $platinumPatientFirstName = $data[0]["platinumPatientFirstName"];
+var $platinumPatientMiddleName = $data[0]["platinumPatientMiddleName"];
+var $platinumPatientLastName = $data[0]["platinumPatientLastName"]; 
+var $platinumPatientEmail = $data[0]["platinumPatientEmail"];
+var $platinumPatientMobileNumber = $data[0]["platinumPatientMobileNumber"]; 
+var $platinumPatientPassword = $data[0]["platinumPatientPassword"]; 
+var $platinumPatientConfirmPassword = $data[0]["platinumPatientConfirmPassword"];
+var $platinumPatientCardNumber = $data[0]["platinumPatientCardNumber"]; 
+var $platinumPatientCardExpiry = $data[0]["platinumPatientCardExpiry"];
+var $platinumPatientcardCVV = $data[0]["platinumPatientcardCVV"];
+var $expectedstring1 = $data[0]["expectedstring1"];
+
+
+
+////Gold patient registration
+//var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet2");
+//var $goldPatientFirstName = $data[0]["goldPatientFirstName"];
+//var $goldPatientMiddleName = $data[0]["goldPatientMiddleName"];
+//var $goldPatientLastName = $data[0]["goldPatientLastName"]; 
+//var $goldPatientEmail = $data[0]["goldPatientEmail"];
+//var $goldPatientMobileNumber = $data[0]["goldPatientMobileNumber"]; 
+//var $goldPatientPassword = $data[0]["goldPatientPassword"]; 
+//var $goldPatientConfirmPassword = $data[0]["goldPatientConfirmPassword"];
+//var $goldPatientCardNumber = $data[0]["goldPatientCardNumber"]; 
+//var $goldPatientCardExpiry = $data[0]["goldPatientCardExpiry"];
+//var $goldPatientcardCVV = $data[0]["goldPatientcardCVV"];
+//var $expectedstring2 = $data[0]["expectedstring2"];
+
+
+
+//Silver patient registration
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet3");
+var $silverPatientFirstName = $data[0]["silverPatientFirstName"];
+var $silverPatientMiddleName = $data[0]["silverPatientMiddleName"];
+var $silverPatientLastName = $data[0]["silverPatientLastName"];
+var $silverPatientEmail = $data[0]["silverPatientEmail"];
+var $silverPatientMobileNumber = $data[0]["silverPatientMobileNumber"]; 
+var $silverPatientPassword = $data[0]["silverPatientPassword"];
+var $silverPatientConfirmPassword = $data[0]["silverPatientConfirmPassword"];
+var $expectedstring3 = $data[0]["expectedstring3"];
+
+
+
+//Coupon patient registration
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet4");
+var $couponID = $data[0]["couponID"];
+var $couponPatientFirstName = $data[0]["couponPatientFirstName"];
+var $couponPatientMiddleName = $data[0]["couponPatientMiddleName"]; 
+var $couponPatientLastName = $data[0]["couponPatientLastName"];
+var $couponPatientEmail = $data[0]["couponPatientEmail"];
+var $couponPatientMobileNumber = $data[0]["couponPatientMobileNumber"];
+var $couponPatientPassword = $data[0]["couponPatientPassword"];
+var $couponPatientConfirmPassword = $data[0]["couponPatientConfirmPassword"];
+var $expectedstring4 = $data[0]["expectedstring4"];
+
+
+
+
+//Patient Profile (Demographics)
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet5");
+var $patientFirstName = $data[0]["patientFirstName"];
+var $middleName = $data[0]["middleName"]; 
+var $patientLastName = $data[0]["patientLastName"]; 
+var $patientDOB = $data[0]["patientDOB"]; 
+var $patientBloodGroup = $data[0]["patientBloodGroup"]; 
+var $patientIdentityDetails = $data[0]["patientIdentityDetails"]; 
+var $patientEmergencyContactName = $data[0]["patientEmergencyContactName"]; 
+var $patientEmergencyContactNumber = $data[0]["patientEmergencyContactNumber"]; 
+var $country =$data[0]["country"]; 
+var $state = $data[0]["state"]; 
+var $city = $data[0]["city"]; 
+var $patientLocation = $data[0]["patientLocation"];
+var $patientAddress = $data[0]["patientAddress"]; 
+var $zipCode = $data[0]["zipCode"];
+var $insuranceProvider = $data[0]["insuranceProvider"];
+var $insurancePolicyNumber = $data[0]["insurancePolicyNumber"];
+var $insuranceValidity = $data[0]["insuranceValidity"];	
+var $language = $data[0]["language"];
+var $religion = $data[0]["religion"]; 
+var $policeStation = $data[0]["policeStation"];
+
+
+
+//Patient Login
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet6");
+var $patientusername = $data[0]["patientusername"];
+var $patientpassword = $data[0]["patientpassword"];
+
+
+//Upload Patient Record
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet7");
+var $multiUploadedFileList = $data[0]["multiUploadedFileList"];
+
+
+
+//View Patient Records
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet8");
+var $emailAddress = $data[0]["emailAddress"];
+var $emailAddress1 = $data[0]["emailAddress1"];
+var $recordType = $data[0]["recordType"];
+
+
+
+//Patient Vitals
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet9");
+var $BPrecordDate = $data[0]["BPrecordDate"];
+var $BPsystolic = $data[0]["BPsystolic"];
+var $BPdiastolic = $data[0]["BPdiastolic"];
+var $tempRecorddate = $data[0]["tempRecorddate"];
+var $tempValue = $data[0]["tempValue"];
+var $pulseRecorddate = $data[0]["pulseRecorddate"];
+var $pulseValue = $data[0]["pulseValue"]; 
+var $respRecordDate = $data[0]["respRecordDate"];
+var $respValue = $data[0]["respValue"];
+var $RBSrecordDate = $data[0]["RBSrecordDate"];
+var $RBSValue = $data[0]["RBSValue"];
+var $BMIrecordDate = $data[0]["BMIrecordDate"];
+var $height_feet = $data[0]["height_feet"];
+var $height_inches = $data[0]["height_inches"];
+var $weight = $data[0]["weight"];
+	
+	
+
+//Book An Appointment
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet10");
+var $location = $data[0]["location"];
+var $doctorName = $data[0]["doctorName"];
+var $scheduledDate = $data[0]["scheduledDate"];
+var $scheduledTime = $data[0]["scheduledTime"];
+var $reasonForVisit = $data[0]["reasonForVisit"];
+
+
+
+//Patient Surgery Referral Service Request 
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet11");
+var $surgerySpecialty = $data[0]["surgerySpecialty"];	       
+var $surgeryProcedure = $data[0]["surgeryProcedure"];
+var $surgeryPreferredDate = $data[0]["surgeryPreferredDate"];	
+var $surgeryDescription = $data[0]["surgeryDescription"];
+var $surgeryRecordType = $data[0]["surgeryRecordType"];
+
+
+//Patient Second Opinion Service Request 
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet12");
+var $secondOpinionSpecialty = $data[0]["secondOpinionSpecialty"];
+var $secondOpinionPreferredCountry = $data[0]["secondOpinionPreferredCountry"];
+var $secondOpinionDescription = $data[0]["secondOpinionDescription"];
+var $secondOpinionRecordType = $data[0]["secondOpinionRecordType"];
+
+
+
+//Patient Teleconsultation Service Request 
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet13");
+var $teleconsultationChiefComplaint = $data[0]["teleconsultationChiefComplaint"];
+var $teleconsultationPreferredDate = $data[0]["teleconsultationPreferredDate"];
+var $teleconsultationPreferredTime = $data[0]["teleconsultationPreferredTime"];
+var $teleconsultationDescription = $data[0]["teleconsultationDescription"];
+
+
+
+//Patient Lab Service Request 
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet14");
+var $labRecordType = $data[0]["labRecordType"];
+var $labPreferredCountry = $data[0]["labPreferredCountry"]; 
+var $labPreferredState = $data[0]["labPreferredState"];
+var $labPreferredCity = $data[0]["labPreferredCity"]; 
+var $labPreferredLocation = $data[0]["labPreferredLocation"];
+var $labPreferredAddress = $data[0]["labPreferredAddress"]; 
+var $labZipCode = $data[0]["labZipCode"];
+var $labPreferredDate = $data[0]["labPreferredDate"]; 
+var $labPreferredTime = $data[0]["labPreferredTime"];
+var $labDescription = $data[0]["labDescription"];
+
+
+	
+//Patient Pharmacy Service Request 
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet15");
+var $pharmacyRecordType = $data[0]["pharmacyRecordType"];
+var $pharmacyProductName = $data[0]["pharmacyProductName"];	
+var $pharmacyProductQuantity = $data[0]["pharmacyProductQuantity"];
+var $pharmacyProductName1 = $data[0]["pharmacyProductName1"];
+var $pharmacyProductQuantity1 = $data[0]["pharmacyProductQuantity1"];
+var $pharmacyProductName2 = $data[0]["pharmacyProductName2"];
+var $pharmacyProductQuantity2 = $data[0]["pharmacyProductQuantity2"];
+var $pharmacyPreferredCountry = $data[0]["pharmacyPreferredCountry"]; 
+var $pharmacyPreferredState	= $data[0]["pharmacyPreferredState"];
+var $pharmacyPreferredCity =$data[0]["pharmacyPreferredCity"]; 
+var $pharmacyPreferredLocation = $data[0]["pharmacyPreferredLocation"];
+var $pharmacyPreferredAddress = $data[0]["pharmacyPreferredAddress"];	
+var $pharmacyZipCode = $data[0]["pharmacyZipCode"];
+var $pharmacyPreferredDate = $data[0]["pharmacyPreferredDate"];
+var $pharmacyPreferredTime = $data[0]["pharmacyPreferredTime"];
+var $pharmacyDescription = $data[0]["pharmacyDescription"];	
+	
+	
+//Patient Home Health Care Service Request 	
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet16");
+var $homeHealthCareCategory = $data[0]["homeHealthCareCategory"];
+var $homeHealthCareService = $data[0]["homeHealthCareService"];
+var $homeHealthCareDescription = $data[0]["homeHealthCareDescription"];	
+var $homeHealthCarePreferredCountry = $data[0]["homeHealthCarePreferredCountry"];
+var $homeHealthCarePreferredState = $data[0]["homeHealthCarePreferredState"];
+var $homeHealthCarePreferredCity =$data[0]["homeHealthCarePreferredCity"];	
+var $homeHealthCarePreferredLocation = $data[0]["homeHealthCarePreferredLocation"];
+var $homeHealthCarePreferredAddress = $data[0]["homeHealthCarePreferredAddress"];
+var $homeHealthCareZipCode = $data[0]["homeHealthCareZipCode"];	
+var $homeHealthCarePreferredDate =$data[0]["homeHealthCarePreferredDate"];
+var $homeHealthCarePreferredTime = $data[0]["homeHealthCarePreferredTime"]; 	
+	
+	
+	
+//Symptoms Checker and Drug Side Effects
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet17");
+var $selectBodyPart = $data[0]["selectBodyPart"];
+var $selectSpecificPart = $data[0]["selectSpecificPart"];
+var $drugName = $data[0]["drugName"];	
+var $drugName1 = $data[0]["drugName1"];
+	
+
+
+//Add Family Member Dependent	
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet18");
+var $dependentFirstName = $data[0]["dependentFirstName"];
+var $dependentMiddleName = $data[0]["dependentMiddleName"];
+var $dependentLastName = $data[0]["dependentLastName"];
+var $dependentDOB= $data[0]["dependentDOB"];
+var $dependentRelation = $data[0]["dependentRelation"];	
+	
+	
+	
+//Add Family Member Independent	
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet19");
+var $independentFirstName = $data[0]["independentFirstName"];
+var $independentMiddleName = $data[0]["independentMiddleName"];
+var $independentLastName = $data[0]["independentLastName"];
+var $independentDOB= $data[0]["independentDOB"];
+var $independentRelation = $data[0]["independentRelation"];		
+var $independentMobileNumber = $data[0]["independentMobileNumber"];
+var $independentEmailAddress = $data[0]["independentEmailAddress"];	
+	
+	
+	
+	
+//Register Patient By PayTM	
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet20");
+var $paytmPatientFirstName = $data[0]["paytmPatientFirstName"];
+var $paytmPatientMiddleName = $data[0]["paytmPatientMiddleName"];
+var $paytmPatientLastName = $data[0]["paytmPatientLastName"];
+var $paytmPatientEmail = $data[0]["paytmPatientEmail"];	
+var $paytmPatientMobileNumber = $data[0]["paytmPatientMobileNumber"];
+var $paytmPatientPassword = $data[0]["paytmPatientPassword"];
+var $paytmPatientConfirmPassword = $data[0]["paytmPatientConfirmPassword"];	
+var $paytmNumber = $data[0]["paytmNumber"];
+var $paytmOTP = $data[0]["paytmOTP"];	
+	
+	
+	
+//Register Subscriber By Razor Pay
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet2");
+var $razorpayPatientFirstName = $data[0]["razorpayPatientFirstName"];
+var $razorpayPatientMiddleName = $data[0]["razorpayPatientMiddleName"];
+var $razorpayPatientLastName = $data[0]["razorpayPatientLastName"]; 
+var $razorpayPatientEmail = $data[0]["razorpayPatientEmail"];
+var $razorpayPatientMobileNumber = $data[0]["razorpayPatientMobileNumber"]; 
+var $razorpayPatientPassword = $data[0]["razorpayPatientPassword"]; 
+var $razorpayPatientConfirmPassword = $data[0]["razorpayPatientConfirmPassword"];
+var $razorpayPatientCardNumber = $data[0]["razorpayPatientCardNumber"]; 
+var $razorpayPatientCardExpiry = $data[0]["razorpayPatientCardExpiry"];
+var $razorpayPatientcardCVV = $data[0]["razorpayPatientcardCVV"];
+var $expectedstring2 = $data[0]["expectedstring2"];
+	
+	
+	
+//Forgot Password	
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls", "Sheet21");
+var $forgotPasswordEmail = $data[0]["forgotPasswordEmail"];
+var $forgotPasswordNew  = $data[0]["forgotPasswordNew"];
+var $forgotConfirmPassword  = $data[0]["forgotConfirmPassword"];	
+	
+
+
+//Change Password
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Patient\\patientTestData.xls",	"Sheet22");
+var $oldPassword = $data[0]["oldPassword"];
+var $newPassword = $data[0]["newPassword"];
+var $confirmPassword = $data[0]["confirmPassword"];	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

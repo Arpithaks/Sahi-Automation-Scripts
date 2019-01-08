@@ -1,0 +1,23 @@
+function clinicScheduledAppointmentsKendoParams($clinicAppointmentPatientName, $clinicAppointmentReasonForVisit){
+	_wait(2000);
+	_click(_link(2));
+	_click(_span("Appointment"));
+	_click(_link(2));
+	var $doc = "Dr. testdoctor";
+	_set($doc, document.getElementById("count9").doc);
+	//_click(_label("Dr. testdoctor 1"));
+	_click(_cell("k-today k-nonwork-hour[10]"));
+	_doubleClick(_cell("k-today k-nonwork-hour[10]"));
+	_setValue(_textbox("title"), $clinicAppointmentPatientName);
+	_click(_heading3("demopatient test"));
+	_setValue(_textarea("description"), $clinicAppointmentReasonForVisit);
+	_click(_link("Save[1]"));
+
+}
+
+_include("..\\Library\\Repository\\ClinicRepo.sah");
+_include("..\\Library\\Functions\\login.sah");
+
+login($clinicusername, $clinicpassword);
+
+clinicScheduledAppointmentsKendoParams($clinicAppointmentPatientName, $clinicAppointmentReasonForVisit);

@@ -1,0 +1,27 @@
+function homeHealthCareServiceRequestInputParams($homeHealthCareCategory, $homeHealthCareService, $homeHealthCareDescription, $homeHealthCarePreferredCountry, $homeHealthCarePreferredState, $homeHealthCarePreferredCity, $homeHealthCarePreferredLocation, $homeHealthCarePreferredAddress, $homeHealthCareZipCode, $homeHealthCarePreferredDate, $homeHealthCarePreferredTime, $expectedstring){
+	_click(_span("Service Request"));
+	_click(_span("Home Healthcare Services"));
+	_setSelected(_select("category"), $homeHealthCareCategory);
+	_setSelected(_select("serviceName"), $homeHealthCareService);
+	_setValue(_textarea("description"), $homeHealthCareDescription);
+	_click(_button("Next"));
+	_click(_button("Add New Address"));
+	_setSelected(_select("address.country"), $homeHealthCarePreferredCountry);
+	_setSelected(_select("address.state"), $homeHealthCarePreferredState);
+	_setSelected(_select("address.city"), $homeHealthCarePreferredCity);
+	_setValue(_textbox("address.location"), $homeHealthCarePreferredLocation);
+	_setValue(_textarea("address.fullAddress"), $homeHealthCarePreferredAddress);
+	_setValue(_textbox("address.zipCode"), $homeHealthCareZipCode);
+	_setValue(_textbox("preferredDate"), $homeHealthCarePreferredDate);
+	_setSelected(_select("preferredTime"), $homeHealthCarePreferredTime);
+	_click(_button("Next"));
+	_check(_checkbox("terms"));
+	_click(_submit("Submit Request"));
+	_assertEqual($expectedstring, _getText(_bold($expectedstring)));
+	_assertContainsText($expectedstring, _bold($expectedstring));
+}
+	
+_include("..\\Library\\Functions\\login.sah");
+_include("..\\Library\\Repository\\PatientRepo.sah");
+
+homeHealthCareServiceRequestInputParams($homeHealthCareCategory, $homeHealthCareService, $homeHealthCareDescription, $homeHealthCarePreferredCountry, $homeHealthCarePreferredState, $homeHealthCarePreferredCity, $homeHealthCarePreferredLocation, $homeHealthCarePreferredAddress, $homeHealthCareZipCode, $homeHealthCarePreferredDate, $homeHealthCarePreferredTime, "Your Home Health Care Service request has been submitted successfully.Our customer care will get back to you shortly!");

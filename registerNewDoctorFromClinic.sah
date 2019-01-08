@@ -1,0 +1,27 @@
+function inputRegisterNewDoctorFromClinicParams($doctorFirstName, $doctorMiddleName, $doctorLastName, $doctorRegistrationNumber, $doctorEmail, $doctorMobileNumber, $expectedstring){ 
+	_click(_link("Manage Staff"));
+	_click(_span("Register Doctor"));
+	_setValue(_textbox("doctors.name.firstName"), $doctorFirstName);
+	_setValue(_textbox("doctors.name.middleName"), $doctorMiddleName);
+	_setValue(_textbox("doctors.name.lastName"), $doctorLastName);
+	_setValue(_textbox("doctors.medLicNumber"), $doctorRegistrationNumber);
+	_setValue(_textbox("doctors.email"), $doctorEmail);
+	_setValue(_textbox("doctors.mobileNo"), $doctorMobileNumber);
+	_click(_submit("Register"));
+	_assertExists(_div($expectedstring));
+	_assertVisible(_div($expectedstring));
+}
+	
+
+_include("..\\Library\\Repository\\ClinicRepo.sah");
+_include("..\\Library\\Functions\\login.sah");
+
+login($clinicusername, $clinicpassword);
+inputRegisterNewDoctorFromClinicParams($doctorFirstName, $doctorMiddleName, $doctorLastName, $doctorRegistrationNumber, $doctorEmail, $doctorMobileNumber, "User has Register successfully")
+
+
+
+
+
+
+

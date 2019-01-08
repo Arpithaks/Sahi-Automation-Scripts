@@ -1,0 +1,154 @@
+//Doctor online Registration
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Doctor\\doctorTestData.xls", "Sheet1");
+var $doctorFirstName = $data[0]["doctorFirstName"];
+var $doctorMiddleName = $data[0]["doctorMiddleName"];
+var $doctorLastName = $data[0]["doctorLastName"]; 
+var $doctorMLRNumber = $data[0]["doctorMLRNumber"];
+var $doctorEmail = $data[0]["doctorEmail"];
+var $doctorMobileNumber = $data[0]["doctorMobileNumber"]; 
+var $doctorPassword = $data[0]["doctorPassword"]; 
+var $doctorConfirmPassword = $data[0]["doctorConfirmPassword"];
+var $doctorCardNumber = $data[0]["doctorCardNumber"]; 
+var $doctorCardExpiry = $data[0]["doctorCardExpiry"];
+var $doctorcardCVV = $data[0]["doctorcardCVV"];
+var $expectedstring = $data[0]["expectedstring"];
+
+
+
+//Doctor Login
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Doctor\\doctorTestData.xls", "Sheet2");
+var $doctorusername = $data[0]["doctorusername"];
+var $doctorpassword = $data[0]["doctorpassword"];
+
+
+//Doctor Profile (Personal settings)
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Doctor\\doctorTestData.xls", "Sheet3");
+var $doctorFirstName = $data[0]["doctorFirstName"];
+var $doctorMiddleName = $data[0]["doctorMiddleName"]; 
+var $doctorLastName = $data[0]["doctorLastName"];
+var $qualification = $data[0]["qualification"]; 
+var $collegeName = $data[0]["collegeName"];
+var $graduationYear = $data[0]["graduationYear"]; 
+var $qualification1 = $data[0]["qualification1"];
+var $collegeName1 = $data[0]["collegeName1"];
+var $graduationYear1 = $data[0]["graduationYear1"];
+var $practiceYear = $data[0]["practiceYear"];  
+var $doctorSpeciality = $data[0]["doctorSpeciality"]; 
+var $aboutDoctor = $data[0]["aboutDoctor"];
+var $workExperience = $data[0]["workExperience"]; 
+var $awards = $data[0]["awards"]; 
+var $membership = $data[0]["membership"];
+
+
+
+
+//Register Patient From Doctor
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Doctor\\doctorTestData.xls", "Sheet4");
+var $docPatientFirstName = $data[0]["docPatientFirstName"]; 
+var $docPatientMiddleName = $data[0]["docPatientMiddleName"]; 
+var $docPatientLastName = $data[0]["docPatientLastName"]; 
+var $docPatientEmail = $data[0]["docPatientEmail"]; 
+var $docPatientMobileNumber = $data[0]["docPatientMobileNumber"];
+
+
+
+//Add Existing Patient In Doctor
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Doctor\\doctorTestData.xls", "Sheet5");
+var $patientDatalifeID = $data[0]["patientDatalifeID"]; 
+
+
+
+//Doctor Consultation EMR
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Doctor\\doctorTestData.xls", "Sheet6");
+var $docPatientName = $data[0]["docPatientName"]; 
+var $icdCode = $data[0]["icdCode"]; 
+var $icdName = $data[0]["icdName"];
+var $medicalHistory =$data[0]["medicalHistory"];
+var $familyHistory = $data[0]["familyHistory"]; 
+var $surgicalHistory = $data[0]["surgicalHistory"]; 
+var $socialHistory = $data[0]["socialHistory"]; 
+var $riskFactors = $data[0]["riskFactors"]; 
+var $allergies = $data[0]["allergies"]; 
+var $pastMedications = $data[0]["pastMedications"]; 
+var $integumentary = $data[0]["integumentary"]; 
+var $skeletal = $data[0]["skeletal"]; 
+var $nervous = $data[0]["nervous"]; 
+var $cardiovascular = $data[0]["cardiovascular"]; 
+var $endocrine = $data[0]["endocrine"]; 
+var $muscular = $data[0]["muscular"]; 
+var $lymphatic = $data[0]["lymphatic"]; 
+var $respiratory = $data[0]["respiratory"]; 	
+var $urinary =$data[0]["urinary"]; 
+var $excretory = $data[0]["excretory"]; 
+var $reproductive =$data[0]["reproductive"]; 
+var $digestive =$data[0]["digestive"]; 
+var $immune = $data[0]["immune"];	
+var $temperature = $data[0]["temperature"]; 
+var $pulseRate = $data[0]["pulseRate"]; 
+var $respiratoryRate =$data[0]["respiratoryRate"]; 
+var $RBS = $data[0]["RBS"]; 
+var $bpSystolic = $data[0]["bpSystolic"]; 
+var $bpDiastolic = $data[0]["bpDiastolic"]; 
+var $heightFeet = $data[0]["heightFeet"]; 
+var $heightInches = $data[0]["heightInches"]; 
+var $weight = $data[0]["weight"];
+var $constitutional = $data[0]["constitutional"]; 
+var $eyes = $data[0]["eyes"]; 
+var $mouthEnt = $data[0]["mouthEnt"]; 
+var $headNeck = $data[0]["headNeck"]; 
+var $respiratory1 = $data[0]["respiratory1"];
+var $cardiovascular1 = $data[0]["cardiovascular1"]; 
+var $chest = $data[0]["chest"]; 
+var $gastrointestinal  = $data[0]["gastrointestinal"]; 
+var $genitourinaryMale  =$data[0]["genitourinaryMale"]; 
+var $genitourinaryFemale = $data[0]["genitourinaryFemale"]; 
+var $lymphatic1 = $data[0]["lymphatic1"]; 
+var $musculoskeletal = $data[0]["musculoskeletal"]; 
+var $skin = $data[0]["skin"]; 
+var $Neurologic = $data[0]["Neurologic"]; 
+var $psychaitric = $data[0]["psychaitric"]; 
+var $extremities = $data[0]["extremities"]; 
+var $dental = $data[0]["dental"];
+var $drugName = $data[0]["drugName"]; 
+var $frequency  =$data[0]["frequency"]; 
+var $route = $data[0]["route"]; 
+var $numberOfdays  = $data[0]["numberOfdays"];
+var $procedures = $data[0]["procedures"]; 
+var $assessment = $data[0]["assessment"]; 
+var $followUp = $data[0]["followUp"];
+
+
+
+
+//Doctor Appointment Settings
+var $data = _readExcelFile("C:\\Users\\Arpitha\\sahi_pro\\userdata\\scripts\\DataLife Version-2\\Doctor\\doctorTestData.xls", "Sheet7");
+var $visitingClinicName = $data[0]["visitingClinicName"];
+var $doctorAssociateClinicLocation = $data[0]["doctorAssociateClinicLocation"];
+var $clinicAddress = $data[0]["clinicAddress"];
+var $zipCode = $data[0]["zipCode"];
+var $consultationFees = $data[0]["consultationFees"];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

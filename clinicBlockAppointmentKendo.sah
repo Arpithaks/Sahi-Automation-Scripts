@@ -1,0 +1,28 @@
+function clinicBlockAppointmentKendoParams($clinicBlockAppointmentReasonToLeave){
+	_wait(2000);
+	_click(_link(2));
+	_click(_span("Appointment"));
+	_click(_link(2));
+	var $doc3 = "Dr. testdoctor";
+	_set($doc3, document.getElementById("count9").doc);
+	_click(_paragraph("demopatient test 07:30 PM - 08:00 PM"));
+	_click(_link("Edit Appointment[3]"));
+	_click(_span("Block Appointment"));
+	_click(_span("k-icon k-i-calendar[3]"));
+	_setValue(_textbox("leaveReason"), $clinicBlockAppointmentReasonToLeave);
+	_click(_link("24"));
+	_click(_span("k-icon k-i-calendar[4]"));
+	_click(_link("24[1]"));
+	_check(_checkbox("canNotifyDoc"));
+	_check(_checkbox("canNotifyPat"));
+	_click(_link("Save[1]"));
+}
+
+_include("..\\Library\\Repository\\ClinicRepo.sah");
+_include("..\\Library\\Functions\\login.sah");
+
+login($clinicusername, $clinicpassword);
+
+clinicBlockAppointmentKendoParams($clinicBlockAppointmentReasonToLeave);
+
+

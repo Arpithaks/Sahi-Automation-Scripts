@@ -1,0 +1,4 @@
+"#script","url","users"
+"registerNewDoctorFromClinic.sah","http://localhost:8080","1"
+"clinicProfile.sah","http://localhost:8080","1"
+"clinicDoctorAppointmentSettings.sah","http://localhost:8080","1"

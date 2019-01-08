@@ -1,0 +1,39 @@
+function clinicDoctorProfileInputParams($clinicDoctorFirstName, $clinicDoctorMiddleName, $clinicDoctorLastName, $clinicDoctorQualification, $clinicDoctorCollegeName,
+	$clinicDoctorGraduation, $clinicDoctorStartOfPractice, $clinicDoctorAbout, $clinicDoctorWorkExp, $clinicDoctorAwards, $clinicDoctorMembership, $expectedstring){
+		_wait(3000);
+		_click(_link(2));
+		_click(_link("Manage Staff"));
+		_click(_span("Doctor Profile"));
+		_click(_span("Select Doctor"));
+		_click(_listItem("Dr. kendo one"));
+		_click(_button("Edit"));
+		_setValue(_textbox("name.firstName"), $clinicDoctorFirstName);
+		_setValue(_textbox("name.middleName"), $clinicDoctorMiddleName);
+		_setValue(_textbox("name.lastName"), $clinicDoctorLastName);
+		_check(_radio("Female"));
+		_setValue(_textbox("qualifications.qualification"), $clinicDoctorQualification);
+		_setValue(_textbox("qualifications.collegeName"), $clinicDoctorCollegeName);
+		_setValue(_textbox("qualifications.yearOfGraduation"), $clinicDoctorGraduation);
+		_click(_span("2002"));
+		_setValue(_textbox("Start of Practice"), $clinicDoctorStartOfPractice);
+		_click(_listItem("2002"));
+		_click(_listItem("Allergy"));
+		_setValue(_textarea("aboutDoctor"), $clinicDoctorAbout);
+		_setValue(_textarea("workExp"), $clinicDoctorWorkExp);
+		_setValue(_textarea("awardsRecg"), $clinicDoctorAwards);
+		_setValue(_textarea("membership"), $clinicDoctorMembership);
+		_click(_submit("Save"));
+		_assertExists(_div($expectedstring));
+		_assertVisible(_div($expectedstring));	
+}
+
+_include("..\\Library\\Repository\\ClinicRepo.sah");
+_include("..\\Library\\Functions\\login.sah");
+
+login($clinicusername, $clinicpassword);
+
+clinicDoctorProfileInputParams($clinicDoctorFirstName, $clinicDoctorMiddleName, $clinicDoctorLastName, $clinicDoctorQualification, $clinicDoctorCollegeName,
+	$clinicDoctorGraduation, $clinicDoctorStartOfPractice, $clinicDoctorAbout, $clinicDoctorWorkExp, $clinicDoctorAwards, $clinicDoctorMembership, "Updated successfully");
+
+
+
